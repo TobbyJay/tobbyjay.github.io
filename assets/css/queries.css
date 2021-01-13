@@ -1,0 +1,22 @@
+@media only screen and (max-width: 360px) {
+.skills-img{
+    
+    width: 150px;
+    
+  }
+  .skills-img-ef{
+   
+    width: 150px;
+    
+  }
+
+  .inline-img{
+  height: 100px;
+  }
+  marquee{
+    width:200px;
+  }
+  body{
+    overflow: hidden;
+  }
+}
