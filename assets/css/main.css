@@ -127,8 +127,9 @@ a, button {
 }
 
 .image-border img {
-  width: 100%;
+  width: 80%;
   border-radius: 1rem;
+  margin-top: -60px;
 }
 
 .display-table {
@@ -1986,16 +1987,21 @@ canvas.particles-js-canvas-el {
 
 @media (max-width: 767px) {
   .image-border img{
-    width: 70%;
+  
     margin-top:-40px;
-    margin-left:45px;
+    margin-left:35px;
   }
+  #about-text{
+    font-size: x-large;
+  }
+ 
   /* .skills-img{
-    width:30%;
+   
   } */
   .hero-03 .hero-image img{
-    top:-40px;
-    margin-bottom: -90px;
+    top: -70px;
+    margin-bottom: -120px;
+    width:75%;
   }
   .overlay-menu-toggler {
     right: 0.5rem;
@@ -2019,6 +2025,20 @@ canvas.particles-js-canvas-el {
     right: 68px;
   }
 }
+#visit-link{
+  align-items: center;
+  margin-right: 0px;
+}
+
+#project-hospital{
+  margin-left: -525px;
+  margin-top: 100px;
+}
+
+#projects{
+margin-top: 100px;
+}
+
 
 @media (max-width: 575px) {
   .testimonial .display-table, .testimonial .display-content {

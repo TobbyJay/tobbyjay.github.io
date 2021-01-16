@@ -1,24 +1,32 @@
 @media only screen and (max-width: 760px) {
   .skills-img{
       
-      width: 550px;
+      width: 100px;
       
     }
     .skills-img-ef{
      
-      width: 550px;
+      width: 100px;
       
     }
   
     .inline-img{
-    height: 600px;
+    height: 200px;
     }
     marquee{
       overflow: hidden;
-      width:290px;
+      width:270px;
       margin-left: -8px;
     }
     body{
       overflow: hidden;
+    }
+    #visit-link{
+      align-items: center;
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+    #project-hospital{
+      margin-left: 0px;
     }
   }
