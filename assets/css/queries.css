@@ -29,4 +29,13 @@
     #project-hospital{
       margin-left: 0px;
     }
+    #image-about-me{
+      width: 50%;
+      margin-left: 45%;
+    }
+
+    .portfolio-single-item{
+      margin-left: -55px;
+      margin-right: 15px;
+    }
   }
