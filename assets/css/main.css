@@ -12,7 +12,11 @@ html{
 .section {
   background-color: #f1f3f6 !important;
 }
-
+.marquee {
+  width: 300px; /* the plugin works for responsive layouts so width is not necessary */
+  overflow: hidden;
+  border:1px solid #ccc;
+}
 .full-screen {
   height: 100vh;
 }
@@ -763,12 +767,13 @@ canvas.particles-js-canvas-el {
 .hero-03 .personal-image img {
   z-index: 10;
   position: relative;
-  box-shadow: 3px 3px 3px #dadada, -3px -3px 3px #fafafa;
+  
 }
 
 .hero-03 .hero-image img {
   z-index: 10;
   position: relative;
+  top:-60px;
 }
 
 .hero-03 .circle {
@@ -1980,6 +1985,18 @@ canvas.particles-js-canvas-el {
 }
 
 @media (max-width: 767px) {
+  .image-border img{
+    width: 70%;
+    margin-top:-40px;
+    margin-left:45px;
+  }
+  /* .skills-img{
+    width:30%;
+  } */
+  .hero-03 .hero-image img{
+    top:-40px;
+    margin-bottom: -90px;
+  }
   .overlay-menu-toggler {
     right: 0.5rem;
   }
@@ -2020,7 +2037,7 @@ canvas.particles-js-canvas-el {
     bottom: 64px;
   }
   .title-wrapper {
-    font-size: 48px;
+    font-size: 38px;
   }
   .title-content {
     top: -44px;
