@@ -1,1411 +1,902 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Umoh Tobby</title>
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <link rel="icon" href="assets/img/63ac370a-d7fb-4dd1-9063-0c73c87d7784.webp">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tobby Umoh — Backend Engineer</title>
+  <meta name="description" content="Tobby Umoh is a backend engineer in Lagos, Nigeria, working across .NET, backend systems, APIs, background jobs, observability, production reliability, and developer tools." />
+  <meta name="author" content="Tobby Umoh" />
+  <meta property="og:title" content="Tobby Umoh — Backend Engineer" />
+  <meta property="og:description" content="Backend engineer working across .NET, backend systems, production reliability, and developer tools." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#f5efe3" />
+  <style>
+    :root {
+      --bg: #f5efe3;
+      --paper: #fffaf1;
+      --ink: #171512;
+      --muted: #6f675c;
+      --soft: #8c8274;
+      --line: #dfd4c2;
+      --line-strong: #cdbda6;
+      --accent: #1d4b43;
+      --accent-2: #8b5e34;
+      --shadow: 0 20px 60px rgba(49, 38, 25, .08);
+      --radius: 24px;
+      --radius-sm: 14px;
+      --max: 1120px;
+    }
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,200;0,300;0,400;0,600;0,800;0,900;1,500&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400;500;700&amp;display=swap" rel="stylesheet">
+    * { box-sizing: border-box; }
 
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
 
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(29, 75, 67, .08), transparent 36rem),
+        radial-gradient(circle at 100% 10%, rgba(139, 94, 52, .09), transparent 34rem),
+        var(--bg);
+      line-height: 1.55;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
 
-    <!-- FontAwesome Css -->
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    <!-- Line icon Css -->
-    <link rel="stylesheet" href="assets/css/LineIcons.css">
-    <!-- Bootstrap Css -->
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <!-- Page Pilling Css -->
-    <link rel="stylesheet" href="assets/css/pagepiling.css">
-    <!-- Owl Carousel Css -->
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <!-- Magnific Popup Css -->
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
-    <!-- Colors Css -->
-    <link rel="stylesheet" href="assets/css/color/green-color.css" id="option-color">
-    <!--  Custom Style CSS  -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/queries.css">
-    <!--  Colorfull Style CSS  -->
-    <link rel="stylesheet" href="assets/css/color/colorfull-main.css">
+    ::selection {
+      color: var(--paper);
+      background: var(--accent);
+    }
 
+    .page {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
 
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(245, 239, 227, .78);
+      border-bottom: 1px solid rgba(223, 212, 194, .7);
+    }
+
+    .nav {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .mark {
+      width: 34px;
+      height: 34px;
+      display: inline-grid;
+      place-items: center;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      font-size: 12px;
+      letter-spacing: .08em;
+      background: var(--paper);
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .navlinks a {
+      padding: 8px 10px;
+      border-radius: 999px;
+      transition: color .2s ease, background .2s ease;
+    }
+
+    .navlinks a:hover {
+      color: var(--ink);
+      background: rgba(255, 250, 241, .8);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: relative;
+    }
+
+    .mobile-menu summary {
+      list-style: none;
+      appearance: none;
+      border: 1px solid var(--line-strong);
+      background: rgba(255, 250, 241, .72);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 9px 12px;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .mobile-menu summary::-webkit-details-marker { display: none; }
+
+    .mobile-menu summary span {
+      display: inline-block;
+      margin-left: 6px;
+      transition: transform .2s ease;
+    }
+
+    .mobile-menu[open] summary span { transform: rotate(180deg); }
+
+    .mobile-panel {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      width: min(260px, calc(100vw - 28px));
+      display: grid;
+      gap: 4px;
+      padding: 8px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 250, 241, .98);
+      box-shadow: var(--shadow);
+    }
+
+    .mobile-panel a {
+      padding: 12px 14px;
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 14px;
+      transition: color .2s ease, background .2s ease;
+    }
+
+    .mobile-panel a:hover {
+      color: var(--ink);
+      background: rgba(245, 239, 227, .7);
+    }
+
+    .hero {
+      padding: 92px 0 80px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
+      gap: 56px;
+      align-items: end;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+      display: inline-block;
+    }
+
+    h1 {
+      font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      font-weight: 500;
+      line-height: .95;
+      font-size: clamp(58px, 10vw, 128px);
+      letter-spacing: -0.075em;
+      margin: 0 0 28px;
+      max-width: 860px;
+    }
+
+    .lead {
+      font-size: clamp(20px, 2.5vw, 31px);
+      line-height: 1.25;
+      letter-spacing: -0.04em;
+      max-width: 760px;
+      margin: 0;
+      color: #29241e;
+    }
+
+    .lead span {
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      font-size: 14px;
+      font-weight: 700;
+      transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn.primary {
+      color: var(--paper);
+      background: var(--ink);
+    }
+
+    .btn.primary:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .btn.secondary { background: transparent; }
+    .btn.secondary:hover { background: var(--paper); }
+
+    .profile-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 250, 241, .72);
+      box-shadow: var(--shadow);
+    }
+
+    .profile-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .avatar {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: ui-serif, Georgia, serif;
+      font-size: 21px;
+      letter-spacing: -.05em;
+    }
+
+    .profile-top strong {
+      display: block;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+
+    .profile-top small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+    }
+
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-list li {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      align-items: baseline;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .mini-list b {
+      color: var(--soft);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    section {
+      padding: 74px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr);
+      gap: 40px;
+      align-items: start;
+      margin-bottom: 34px;
+    }
+
+    .section-kicker {
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(31px, 4vw, 54px);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -.055em;
+      margin: 0;
+      max-width: 800px;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 700px;
+      margin: 18px 0 0;
+    }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .focus-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 19px;
+      background: rgba(255, 250, 241, .55);
+      min-height: 180px;
+    }
+
+    .focus-card .num {
+      display: block;
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 30px;
+    }
+
+    .focus-card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: -.03em;
+    }
+
+    .focus-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .work-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .work-item {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr) 190px;
+      gap: 24px;
+      align-items: start;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 250, 241, .62);
+      transition: border-color .2s ease, transform .2s ease, background .2s ease;
+    }
+
+    .work-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--line-strong);
+      background: rgba(255, 250, 241, .88);
+    }
+
+    .work-meta {
+      color: var(--soft);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .work-title {
+      margin: 0 0 8px;
+      font-size: 23px;
+      line-height: 1.1;
+      letter-spacing: -.04em;
+    }
+
+    .work-desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 640px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 7px;
+    }
+
+    .tag {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 9px;
+      color: var(--muted);
+      background: rgba(245, 239, 227, .55);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .writing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .note-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 250, 241, .58);
+      padding: 24px;
+    }
+
+    .note-card h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      letter-spacing: -.035em;
+    }
+
+    .note-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: rgba(255, 250, 241, .5);
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr);
+      gap: 24px;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline-row:last-child { border-bottom: 0; }
+
+    .timeline-row time {
+      color: var(--soft);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .timeline-row h3 {
+      margin: 0 0 6px;
+      font-size: 19px;
+      letter-spacing: -.03em;
+    }
+
+    .timeline-row p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .archive {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .archive span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: rgba(255, 250, 241, .55);
+      font-size: 13px;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+      gap: 34px;
+      align-items: start;
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 8px);
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .contact-box h2 {
+      color: var(--paper);
+      max-width: 680px;
+    }
+
+    .contact-box p {
+      color: rgba(255, 250, 241, .72);
+      margin: 18px 0 0;
+      max-width: 680px;
+      font-size: 17px;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-links a, .contact-links button {
+      appearance: none;
+      border: 1px solid rgba(255, 250, 241, .22);
+      color: var(--paper);
+      background: rgba(255, 250, 241, .06);
+      border-radius: 16px;
+      padding: 14px 16px;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background .2s ease, border-color .2s ease;
+    }
+
+    .contact-links a:hover, .contact-links button:hover {
+      background: rgba(255, 250, 241, .12);
+      border-color: rgba(255, 250, 241, .36);
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 26px 0 46px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .quiet-link {
+      color: var(--ink);
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .section-head,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero { padding-top: 68px; }
+
+      .profile-card { max-width: 520px; }
+
+      .focus-grid { grid-template-columns: 1fr 1fr; }
+
+      .work-item {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .tags { justify-content: flex-start; }
+    }
+
+    @media (max-width: 640px) {
+      .page, .nav { width: min(calc(100% - 28px), var(--max)); }
+      .nav { min-height: 64px; position: relative; }
+      .brand span:last-child { display: inline; }
+      .navlinks { display: none; }
+      .mobile-menu { display: block; }
+      .hero { padding: 54px 0 58px; }
+      h1 { font-size: clamp(58px, 18vw, 84px); }
+      .lead { font-size: 21px; }
+      section { padding: 56px 0; }
+      .focus-grid, .writing-grid { grid-template-columns: 1fr; }
+      .timeline-row, .mini-list li { grid-template-columns: 1fr; gap: 8px; }
+      .contact-box { padding: 24px; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Tobby Umoh",
+      "url": "https://tobbyumoh.netlify.app",
+      "email": "mailto:tobbyumoh@gmail.com",
+      "jobTitle": "Backend Engineer",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Lagos",
+        "addressCountry": "Nigeria"
+      },
+      "knowsAbout": [
+        ".NET",
+        "Backend Engineering",
+        "Distributed Systems",
+        "Observability",
+        "Production Reliability",
+        "System Design",
+        "Developer Tools"
+      ],
+      "sameAs": [
+        "https://github.com/tobbyjay",
+        "https://www.linkedin.com/in/tobby-umoh-26115a13b/",
+        "https://x.com/_tobbyumoh",
+        "https://tobby.hashnode.dev/"
+      ]
+    }
+  </script>
 </head>
-
-<body data-spy="scroll" data-target="#scrollspy" data-offset="1" class="flat-demo">
-
-    <!--  Pre Loader  -->
-    <div id="overlayer"></div>
-    <!-- Net.Facebook Modal -->
-    <div class="portfolio-single modal fade" id="net-facebook-modal" tabindex="-1" role="dialog" aria-labelledby="portfolioModalScrollable" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content text-muted">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-                    <div class="pt-4 pb-5">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 col-md-10 mx-auto">
-                                    <div class="text-center">
-                                        <h2 class="mb-3">NET<span class="base-color">.FACEBOOK</span></h2>
-                                    </div>
-                                    <div class="row contact-info mt-5">
-                                        <div class="col-md-4">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Developed by:</b></h6>
-                                                    <p class="mb-0">Your's truly</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 p-title-border mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Technologies Used:</b></h6>
-                                                    <p class="mb-0">C# / Facebook Graph API / .Net 5</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-5">
-                                        <br>
-                                        <br>
-                                        <div class="portfolio-single-item image-border">
-                                            <img src="assets/img/Screenshot (152).png" class="d-block" alt="...">
-                                        </div>
-                                    </div>
-                                    <div class="text-md-left mt-5">
-                                        <p class="my-3"><b>The Problem:</b> So i was told to add a feature that helps the company to post our blog content both on our official blog page and facebook page simultaneously, so Facebook Graph API was the solution to this,
-                                            the issue with this is that i would have to write a bunch of code to get this done and well, i am a bit lazy (in a good way) and i prefer to work smart. So i looked for a package to help me to handle this with
-                                            minimal stress as i had a ton of other features to add and to my surprise i didn't find any. </p>
-                                        <p class="mt-3 mb-0"><b>The Solution:</b> So i had to create the <b>Net.Facebook</b> package which for now only handles "posting contents to a facebook page" , to my surprise , 2 months after launching the package, it has 500+ downloads.
-                                    </div>
-
-                                    <div class="button-border mt-5 mb-0 " id="visit-link">
-                                        <a href="https://www.nuget.org/packages/Net.Facebook/" class="pill-button" target="_blank">Check it out<i class="fa fa-arrow-right go "></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#top" class="brand" aria-label="Tobby Umoh home">
+        <span class="mark">TU</span>
+        <span>Tobby Umoh</span>
+      </a>
+      <div class="navlinks" id="navlinks">
+        <a href="#focus">Focus</a>
+        <a href="#work">Work</a>
+        <a href="#writing">Notes</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <details class="mobile-menu">
+        <summary>Menu <span>↓</span></summary>
+        <div class="mobile-panel" aria-label="Mobile navigation">
+          <a href="#focus">Focus</a>
+          <a href="#work">Work</a>
+          <a href="#writing">Notes</a>
+          <a href="#contact">Contact</a>
         </div>
-    </div>
+      </details>
+    </nav>
+  </header>
 
-    <!-- Tob.by.bot Modal -->
-    <div class="portfolio-single modal fade" id="bot-modal" tabindex="-1" role="dialog" aria-labelledby="portfolioModalScrollable" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content text-muted">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-                    <div class="pt-4 pb-5">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 col-md-10 mx-auto">
-                                    <div class="text-center">
-                                        <h2 class="mb-3">Tob.by.<span class="base-color">bot</span></h2>
-                                    </div>
-                                    <div class="row contact-info mt-5">
-                                        <div class="col-md-4">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Developed by:</b></h6>
-                                                    <p class="mb-0">Your's truly</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 p-title-border mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Technologies Used:</b></h6>
-                                                    <p class="mb-0">C# / Discord / .Net 5</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-5">
-                                        <br>
-                                        <br>
-                                        <div class="portfolio-single-item image-border">
-                                            <img src="assets/img/Screenshot (154).png" class="d-block" alt="...">
-                                        </div>
-                                    </div>
-                                    <div class="text-md-left mt-5">
-                                        <p class="my-3">
-                                            Tob.by.bot is a simple bot that does two things , <b>1.</b> it helps users to easily search and remember EF-CORE and Simple Terminal commands used to perform tasks and
-                                            <b>2.</b> A jolly good fellow once said "Laughter is the best medicine", so if you want to listen to randomm jokes when you are bored, you can do so via this simple bot.
-                                        </p>
-                                    </div>
-
-                                    <div class="button-border mt-5 mb-0 " id="visit-link">
-                                        <a href="https://discord.com/api/oauth2/authorize?client_id=897490044737175582&permissions=157316082758&scope=bot
-                                        " class="pill-button" target="_blank">Add it to your Discord Server<i class="fa fa-arrow-right go "></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <main id="top" class="page">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <div class="eyebrow">Backend Engineer · Lagos</div>
+        <h1 id="hero-title">Tobby Umoh</h1>
+        <p class="lead">
+          I build backend systems that keep moving when real users, webhooks, queues, retries, integrations, and background jobs enter the picture. <span>Most of my work sits around .NET, distributed workflows, production reliability, and developer tools.</span>
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="mailto:tobbyumoh@gmail.com">Email me</a>
+          <a class="btn secondary" href="#work">See selected work</a>
+          <a class="btn secondary" href="https://github.com/tobbyjay" target="_blank" rel="noreferrer">GitHub</a>
         </div>
-    </div>
+      </div>
 
-    <!-- Portfolio Single Modal Start -->
-    <div class="portfolio-single modal fade" id="portfolio-single" tabindex="-1" role="dialog" aria-labelledby="portfolioModalScrollable" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content text-muted">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="pt-4 pb-5">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 col-md-10 mx-auto">
-                                    <div class="text-center">
-                                        <h2 class="mb-3">SPOTA<span class="base-color">HUB</span></h2>
-                                    </div>
-                                    <div class="row contact-info mt-5">
-                                        <div class="col-md-4">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Developed by:</b></h6>
-                                                    <p class="mb-0">Your's truly</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 p-title-border mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <!--  <h6 class="contact_detail-title"><b>Date completed:</b></h6>
-                                                    <p class="mb-0">MVP(october 2020), v2(still under development)</p> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Technologies Used:</b></h6>
-                                                    <p class="mb-0">HTML/ CSS/ JS/ BOOTSTRAP/ C#/ .NET CORE MVC/ ENTITY FRAMEWORK CORE/ MSSQL</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-5">
-                                        <br>
-                                        <br>
-                                        <div class="portfolio-single-item image-border">
-                                            <img src="assets/img/Screenshot 2021-01-12 165354.png" class="d-block" alt="...">
-                                        </div>
-                                    </div>
-                                    <div class="text-md-left mt-5">
-                                        <p class="my-3"><b>The Problem:</b> The whole world is going the "Remote" route and as a result, everyone would at some point want to work remotely , and here in Nigeria, there is usually no constant power supply, so everyone would
-                                            want to find a place to work, i asked a few friends, some on twitter and others close to me, and they said they prefer <b>Hubs and co-working spaces</b>, but <b>the problem is it difficult to locate them</b>,
-                                            and the truth is, even Google( yes THE Google) does not have all the results for Hubs in Nigeria but i do now thanks to an open source repository i came across on Github(more additions are stil coming up).
-                                        </p>
-                                        <p class="mt-3 mb-0"><b>The Solution:</b> <b>SPOTAHUB</b>, yes you saw it here first, as the name implies you can come into this application to look for hubs, add hubs, claim your hubs, manage your hub info,review hubs, report and book
-                                            hubs(coming in v2). ,you can check it out and send your feedback to me, also if you want to collaborate (as i might be making it open source soon), reach out to me <a href="mailto:tobbyumoh@gmail.com">here</a></p>
-                                    </div>
-
-                                    <div class="button-border mt-5 mb-0 " id="visit-link">
-                                        <a href="http://tobbyumoh-001-site1.itempurl.com/" class="pill-button" target="_blank">Check it out<i class="fa fa-arrow-right go "></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <aside class="profile-card" aria-label="Current focus">
+        <div class="profile-top">
+          <div class="avatar" aria-hidden="true">TU</div>
+          <div>
+            <strong>Currently</strong>
+            <small>Building, writing, and sharpening the craft.</small>
+          </div>
         </div>
-    </div>
-    <!--  Portfolio Single Modal End  -->
+        <ul class="mini-list">
+          <li><b>Work</b><span>Backend engineering, systems design, and production problem-solving.</span></li>
+          <li><b>Build</b><span>Foveus, one of the tools I am building around backend execution clarity.</span></li>
+          <li><b>Focus</b><span>.NET, distributed systems, jobs, APIs, observability, reliability.</span></li>
+          <li><b>Public</b><span>Sharing lessons from designing systems and learning production engineering.</span></li>
+        </ul>
+      </aside>
+    </section>
 
-    <!-- Portfolio Single Modal Start(foodaee) -->
-    <div class="portfolio-single modal fade" id="portfolio-foodaee" tabindex="-1" role="dialog" aria-labelledby="portfolioModalScrollable" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content text-muted">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="pt-4 pb-5">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 col-md-10 mx-auto">
-                                    <div class="text-center">
-                                        <h2 class="mb-3">FOOD<span class="base-color">AEE</span></h2>
-                                    </div>
-                                    <div class="row contact-info mt-5">
-                                        <div class="col-md-4">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Developed by:</b></h6>
-                                                    <p class="mb-0">Me</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 p-title-border mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <!--  <h6 class="contact_detail-title"><b>Date completed:</b></h6>
-                                                    <p class="mb-0">August 2020</p> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Technologies Used:</b></h6>
-                                                    <p class="mb-0">HTML/ CSS / JS/ BOOTSTRAP/ JQUERY </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-5">
-                                        <br>
-                                        <br>
-                                        <div class="portfolio-single-item image-border">
-                                            <img src="assets/img/Screenshot 2021-01-12 172724.png" class="d-block" alt="...">
-                                        </div>
-                                    </div>
-                                    <div class="text-md-left mt-5">
-
-                                        <p class="mt-3 mb-0">Foodaee is a recipe finder aplication, i built this because i have a friend who happens to be a chef, and she likes to try out different recipes , some she has heard of, others she hasn't( here is where foodaee
-                                            comes in), foodaee helps her to find any recipe she is looking, you can too. It also has a section called FOODAEE-NEWS where users or anyone can go to if there want to read any news related to food and all things
-                                            food. </p>
-                                    </div>
-
-                                    <div class="button-border mt-5 mb-0 " id="visit-link">
-                                        <a href="http://foodaee.netlify.app/" class="pill-button" target="_blank">Check it out<i class="fa fa-arrow-right go "></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="focus" aria-labelledby="focus-title">
+      <div class="section-head">
+        <div class="section-kicker">Point of view</div>
+        <div>
+          <h2 id="focus-title">I care about the parts of backend engineering that usually fail quietly.</h2>
+          <p class="section-copy">Not just controllers and CRUD. The interesting work is what happens after the request leaves the happy path: delayed jobs, external integrations, retries, reconciliation, state transitions, and the investigation trail when something goes wrong.</p>
         </div>
-    </div>
-    <!--  Portfolio Single Modal End  -->
-    <!-- Portfolio Single Modal Start(E-mov) -->
-    <div class="portfolio-single modal fade" id="portfolio-Emov" tabindex="-1" role="dialog" aria-labelledby="portfolioModalScrollable" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content text-muted">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-                    <div class="pt-4 pb-5">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 col-md-10 mx-auto">
-                                    <div class="text-center">
-                                        <h2 class="mb-3">E<span class="base-color">-MOV</span></h2>
-                                    </div>
-                                    <div class="row contact-info mt-5">
-                                        <div class="col-md-4">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Developed by:</b></h6>
-                                                    <p class="mb-0">Me and Afara Seun</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 p-title-border mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <!--   <h6 class="contact_detail-title"><b>Date completed:</b></h6>
-                                                    <p class="mb-0">Still on-going</p> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Technologies Used:</b></h6>
-                                                    <p class="mb-0">HTML / CSS / JS / Jquery / Asp.Net Webforms</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-5">
-                                        <br>
-                                        <br>
-                                        <div class="portfolio-single-item image-border">
-                                            <img src="assets/img/Screenshot (10).png" class="d-block" alt="...">
-                                        </div>
-                                    </div>
-                                    <div class="text-md-left mt-5">
+      </div>
 
-                                        <p class="mt-3 mb-0"><b>Note, this is a freelance project</b><br>eMOV is the leading immigration application solution designed to modernize the travel and immigration industry and solve the problems of traditional immigration methods
-                                            by offering instant transactions and immediate tracking.
-                                        </p>
-                                    </div>
+      <div class="focus-grid">
+        <article class="focus-card">
+          <span class="num">01</span>
+          <h3>Production reliability</h3>
+          <p>Designing systems that degrade predictably, recover safely, and leave enough evidence for debugging.</p>
+        </article>
+        <article class="focus-card">
+          <span class="num">02</span>
+          <h3>Workflows</h3>
+          <p>State transitions, integrations, background jobs, webhooks, retries, reconciliation, and the operational mess around them.</p>
+        </article>
+        <article class="focus-card">
+          <span class="num">03</span>
+          <h3>.NET systems</h3>
+          <p>C#, ASP.NET Core, workers, Hangfire-style background processing, SQL Server, Redis, and pragmatic architecture.</p>
+        </article>
+        <article class="focus-card">
+          <span class="num">04</span>
+          <h3>Developer tools</h3>
+          <p>Tools and SDKs that reduce ambiguity for engineers instead of adding another dashboard to babysit.</p>
+        </article>
+      </div>
+    </section>
 
-                                    <div class="button-border mt-5 mb-0 " id="visit-link">
-                                        <a href="#" class="pill-button" target="_blank">Still under development<i class="fa fa-arrow-right go "></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="work" aria-labelledby="work-title">
+      <div class="section-head">
+        <div class="section-kicker">Selected work</div>
+        <div>
+          <h2 id="work-title">A cleaner view of what I am building and learning from.</h2>
+          <p class="section-copy">A practical snapshot of public proof, current builds, and private systems work. Not every line needs a polished case study yet; the site can grow as more work becomes public.</p>
         </div>
-    </div>
-    <!--  Portfolio Single Modal End  -->
-    <!-- Portfolio Single Modal Start(THE DROIDCAMP) -->
-    <div class="portfolio-single modal fade" id="portfolio-droidcamp" tabindex="-1" role="dialog" aria-labelledby="portfolioModalScrollable" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content text-muted">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-                    <div class="pt-4 pb-5">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 col-md-10 mx-auto">
-                                    <div class="text-center">
-                                        <h2 class="mb-3">DROID<span class="base-color">CAMP</span></h2>
-                                    </div>
-                                    <div class="row contact-info mt-5">
-                                        <div class="col-md-4">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Developed by:</b></h6>
-                                                    <p class="mb-0">Me</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 p-title-border mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <!--<h6 class="contact_detail-title"><b>Date completed:</b></h6>
-                                                    <p class="mb-0">April 2020</p> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Technologies Used:</b></h6>
-                                                    <p class="mb-0">HTML / CSS / JS</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-5">
-                                        <br>
-                                        <br>
-                                        <div class="portfolio-single-item image-border">
-                                            <img src="assets/img/Screenshot (11).png" class="d-block" alt="...">
-                                        </div>
-                                    </div>
-                                    <div class="text-md-left mt-5">
+      </div>
 
-                                        <p class="mt-3 mb-0">Droidcamp is a community of android developers and tech enthusiasts whose aim is to give rise to new android talents by teaching total beginners and giving them access to mentors and latest resources to help them
-                                            grow and become better android developers, all these for Free.
-                                        </p>
-                                    </div>
+      <div class="work-list">
+        <article class="work-item">
+          <div class="work-meta">Building</div>
+          <div>
+            <h3 class="work-title">Foveus</h3>
+            <p class="work-desc">A developer tool I am building around backend execution clarity: APIs, workers, jobs, outbound calls, logs, and business outcomes. It is part of my work, not the whole identity of this website.</p>
+          </div>
+          <div class="tags"><span class="tag">In progress</span><span class="tag">.NET</span><span class="tag">Reliability</span></div>
+        </article>
 
-                                    <div class="button-border mt-5 mb-0 " id="visit-link">
-                                        <a href="https://thedroidcamp.com" class="pill-button" target="_blank">Check it out<i class="fa fa-arrow-right go "></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <article class="work-item">
+          <div class="work-meta">Open source</div>
+          <div>
+            <h3 class="work-title">Sendbyte .NET SDK</h3>
+            <p class="work-desc">SDK work around clean HTTP clients, webhook verification, tests, docs, samples, and package quality.</p>
+          </div>
+          <div class="tags"><span class="tag">SDK</span><span class="tag">C#</span><span class="tag">NuGet</span></div>
+        </article>
+
+        <article class="work-item">
+          <div class="work-meta">Systems</div>
+          <div>
+            <h3 class="work-title">Production backend work</h3>
+            <p class="work-desc">Private professional work across APIs, async processing, background jobs, webhooks, limits, investigations, production fixes, and reliability improvements. The public version of this should become sanitized engineering notes, not employer-name dropping.</p>
+          </div>
+          <div class="tags"><span class="tag">Private</span><span class="tag">APIs</span><span class="tag">Jobs</span></div>
+        </article>
+
+        <article class="work-item">
+          <div class="work-meta">Archive</div>
+          <div>
+            <h3 class="work-title">Earlier builds</h3>
+            <p class="work-desc">Packages, APIs, bots, experiments, and small products from earlier stages of my journey. They show the long trail of building, but they should stay secondary to the current direction.</p>
+          </div>
+          <div class="tags"><span class="tag">GitHub</span><span class="tag">APIs</span><span class="tag">Experiments</span></div>
+        </article>
+      </div>
+
+      <div class="archive" aria-label="Older projects">
+        <span>Net.Facebook</span>
+        <span>Tob.by.bot</span>
+        <span>Spotahub</span>
+        <span>Find-A-Hub API</span>
+        <span>Mini-Hospital</span>
+        <span>Foodaee</span>
+        <span>CoinFarm</span>
+      </div>
+    </section>
+
+    <section id="writing" aria-labelledby="writing-title">
+      <div class="section-head">
+        <div class="section-kicker">Notes</div>
+        <div>
+          <h2 id="writing-title">Lessons from designing systems and learning production engineering.</h2>
+          <p class="section-copy">This should grow into a proper writing index over time. For now, it is a map of the topics I am actively writing through, with the actual public trail living on Hashnode, LinkedIn, and X.</p>
         </div>
-    </div>
-    <!--  Portfolio Single Modal End  -->
-    <!-- Portfolio Single Modal Start(mini-hospital) -->
-    <div class="portfolio-single modal fade" id="portfolio-mini-hospital" tabindex="-1" role="dialog" aria-labelledby="portfolioModalScrollable" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content text-muted">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="pt-4 pb-5">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 col-md-10 mx-auto">
-                                    <div class="text-center">
-                                        <h2 class="mb-3">MINI<span class="base-color">-HOSPITAL</span></h2>
-                                    </div>
-                                    <div class="row contact-info mt-5">
-                                        <div class="col-md-4">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Developed by:</b></h6>
-                                                    <p class="mb-0">Me</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 p-title-border mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <!--  <h6 class="contact_detail-title"><b>Date completed:</b></h6>
-                                                    <p class="mb-0">July 2020</p> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Technologies Used:</b></h6>
-                                                    <p class="mb-0">C# / .NET CORE / Winforms</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-5">
-                                        <br>
-                                        <br>
-                                        <div class="portfolio-single-item image-border">
-                                            <img src="assets/img/Screenshot (8).png" class="d-block" alt="...">
-                                        </div>
-                                    </div>
-                                    <div class="text-md-left mt-5">
+      </div>
 
-                                        <p class="mt-3 mb-0">Mini-hospital is a mini hospital management application, it helps small clinics/hospitals to manage their patient records, doctors records and also appointments. The hospitals can perform basic CRUD operations for
-                                            Patients, Doctors and also setting of appointments for patients.<br>
-                                            <b>Username:</b> admin, <b>Password:</b> admin.
-                                        </p>
-                                    </div>
+      <div class="writing-grid">
+        <article class="note-card">
+          <h3>Production debugging</h3>
+          <p>Moving from symptoms to evidence: logs, timelines, correlation IDs, job state, integration responses, and database truth.</p>
+        </article>
+        <article class="note-card">
+          <h3>Reliability patterns</h3>
+          <p>Idempotency, retries, webhooks, outbox, reconciliation, rate limits, fallbacks, and failure boundaries.</p>
+        </article>
+        <article class="note-card">
+          <h3>.NET backend engineering</h3>
+          <p>Practical notes from building APIs and workers with C#, ASP.NET Core, SQL, Redis, background jobs, and integrations.</p>
+        </article>
+        <article class="note-card">
+          <h3>Building without the noise</h3>
+          <p>Shipping notes, edge cases, product thinking, and honest tradeoffs without turning every small update into a performance.</p>
+        </article>
+      </div>
+    </section>
 
-                                    <div class="button-border mt-5 mb-0 " id="visit-link">
-                                        <a href="https://drive.google.com/file/d/14kzPxpCviucA7sRjhOX2jr9S9CVFmArG/view?usp=sharing" class="pill-button" target="_blank">Check it out<i class="fa fa-arrow-right go "></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="contact-box">
+        <div>
+          <h2 id="contact-title">Useful conversations are welcome.</h2>
+          <p>Reach out for backend engineering conversations, Foveus feedback, technical writing, .NET systems, production reliability, or collaboration around developer tools.</p>
         </div>
-    </div>
-
-    <!-- SPOTAHUB-API-->
-    <div class="portfolio-single modal fade" id="spot-a-hub" tabindex="-1" role="dialog" aria-labelledby="portfolioModalScrollable" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content text-muted">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="pt-4 pb-5">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 col-md-10 mx-auto">
-                                    <div class="text-center">
-                                        <h2 class="mb-3">FIND-A<span class="base-color">-HUB</span></h2>
-                                    </div>
-                                    <div class="row contact-info mt-5">
-                                        <div class="col-md-4">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Developed by:</b></h6>
-                                                    <p class="mb-0">Me</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 p-title-border mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <!--   <h6 class="contact_detail-title"><b>Date completed:</b></h6>
-                                                    <p class="mb-0">June 2021</p> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Technologies Used:</b></h6>
-                                                    <p class="mb-0">C# / .NET CORE / Postman / EF-Core </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-5">
-                                        <br>
-                                        <br>
-                                        <div class="portfolio-single-item image-border">
-                                            <img src="assets/img/find-a-hub-api.PNG" class="d-block" alt="...">
-                                        </div>
-                                    </div>
-                                    <div class="text-md-left mt-5">
-                                        <p class="my-3"> This is the API version of the SPOTAHUB web application and this is fully open source and can be used by anyone, you can check out the documentation <a href="https://documenter.getpostman.com/view/13436124/TzeTKV7V#c946778f-9085-480c-b252-1ba75084a597"
-                                                target="_blank">here</a>
-                                        </p>
-
-                                        <p class="my-3"> This is currently V1.0, you can currently Add a hub, Get all hubs, Get a hub by state, Get a hub by name and also by Tag(s), if you are interested in contributing to this project or suggesting features, you can
-                                            create a pull request
-                                            <a href="https://github.com/TobbyJay/spot-a-hub">here</a> or you can shoot me a mail <a href="mailto:tobbyumoh@gmail.com">here</a>
-                                        </p>
-                                    </div>
-
-                                    <div class="button-border mt-5 mb-0 " id="visit-link">
-                                        <a href="https://documenter.getpostman.com/view/13436124/TzeTKV7V#c946778f-9085-480c-b252-1ba75084a597" class="pill-button" target="_blank">Check out the doc<i class="fa fa-arrow-right go "></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="contact-links">
+          <a href="mailto:tobbyumoh@gmail.com">Email <span>→</span></a>
+          <a href="https://github.com/tobbyjay" target="_blank" rel="noreferrer">GitHub <span>→</span></a>
+          <a href="https://www.linkedin.com/in/tobby-umoh-26115a13b/" target="_blank" rel="noreferrer">LinkedIn <span>→</span></a>
+          <a href="https://x.com/_tobbyumoh" target="_blank" rel="noreferrer">X / Twitter <span>→</span></a>
+          <a href="https://tobby.hashnode.dev/" target="_blank" rel="noreferrer">Hashnode <span>→</span></a>
+          <button type="button" id="copyEmail">Copy email <span>↗</span></button>
         </div>
-    </div>
-
-
-    <!-- Portfolio Single Modal Start(mini-hospital) -->
-    <div class="portfolio-single modal fade" id="portfolio-coinfarm" tabindex="-1" role="dialog" aria-labelledby="portfolioModalScrollable" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content text-muted">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="pt-4 pb-5">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 col-md-10 mx-auto">
-                                    <div class="text-center">
-                                        <h2 class="mb-3">COIN<span class="base-color">-FARM</span></h2>
-                                    </div>
-                                    <div class="row contact-info mt-5">
-                                        <div class="col-md-4">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Currently being developed by:</b></h6>
-                                                    <p class="mb-0">Me and Artoyebi Olaoluwa</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 p-title-border mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <!-- <h6 class="contact_detail-title"><b>Date completed:</b></h6>
-                                                    <p class="mb-0">Currently in progress</p> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Technologies Used:</b></h6>
-                                                    <p class="mb-0">Html / Css / Javascript / Jquery / C# / .NET CORE / Postman / Swagger / Nomics Cryptocurrency Api</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-5">
-                                        <br>
-                                        <br>
-                                        <div class="portfolio-single-item image-border">
-                                            <img src="assets/img/screencapture-coinfarm-001-site1-itempurl-user-index-2021-06-16-22_07_17.png" class="d-block" alt="...">
-                                        </div>
-                                    </div>
-                                    <div class="text-md-left mt-5">
-
-                                        <p class="mt-3 mb-0"> Coinfarm is a p2p Cryptocurrency exchange platforms that aims to allow people transact their cryptocurrency with ease, you can also save your naira(if you are from nigeria) or your dollars, and use it to make wise
-                                            investments on Coinfarm, you can pay utility bills (coming soon). Interested to see what is currently going on?
-                                        </p>
-                                    </div>
-
-                                    <div class="button-border mt-5 mb-0 " id="visit-link">
-                                        <a href="http://coinfarm-001-site1.itempurl.com/" class="pill-button" target="_blank">Check it out<i class="fa fa-arrow-right go "></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--  Portfolio Single Modal End  -->
-
-
-    <!-- Portfolio Single Modal Start(trading-ritual) -->
-    <div class="portfolio-single modal fade" id="portfolio-trading" tabindex="-1" role="dialog" aria-labelledby="portfolioModalScrollable" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content text-muted">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="pt-4 pb-5">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 col-md-10 mx-auto">
-                                    <div class="text-center">
-                                        <h2 class="mb-3">TRADING<span class="base-color">RITUAL</span></h2>
-                                    </div>
-                                    <div class="row contact-info mt-5">
-                                        <div class="col-md-4">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Developed by:</b></h6>
-                                                    <p class="mb-0">Me</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 p-title-border mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <!--<h6 class="contact_detail-title"><b>Date completed:</b></h6>
-                                                    <p class="mb-0">February 2021</p> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Technologies Used:</b></h6>
-                                                    <p class="mb-0">Html / Css / Bootstrap / Javascript / Jquery / C# / .NET CORE</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-5">
-                                        <br>
-                                        <br>
-                                        <div class="portfolio-single-item image-border">
-                                            <img src="assets/img/Trading-ritual.PNG" class="d-block" alt="...">
-                                        </div>
-                                    </div>
-                                    <div class="text-md-left mt-5">
-
-                                        <p class="mt-3 mb-0"> Trading Ritual is a web application that helps traders to analyze their trades , set strategies and know what works for them and what doesn't, it also helps them to keep track of their winnings and losses.
-                                        </p>
-                                    </div>
-
-                                    <div class="button-border mt-5 mb-0 " id="visit-link">
-                                        <a href="#" class="pill-button" target="_blank">Check it out<i class="fa fa-arrow-right go "></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--  Portfolio Single Modal End  -->
-
-    <!-- Portfolio Single Modal Start(trading-ritual) -->
-    <div class="portfolio-single modal fade" id="blog" tabindex="-1" role="dialog" aria-labelledby="portfolioModalScrollable" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content text-muted">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="pt-4 pb-5">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 col-md-10 mx-auto">
-                                    <div class="text-center">
-                                        <h2 class="mb-3">SEEING<span class="base-color">#( sharp )</span></h2>
-                                    </div>
-                                    <div class="row contact-info mt-5">
-                                        <div class="col-md-4">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Currently being developed by:</b></h6>
-                                                    <p class="mb-0">Me</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 p-title-border mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <!--<h6 class="contact_detail-title"><b>Date completed:</b></h6>
-                                                    <p class="mb-0">February 2021</p>-->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mt-3 mt-md-0">
-                                            <div class="text-center">
-                                                <div>
-                                                    <h6><b>Technologies Used:</b></h6>
-                                                    <p class="mb-0">Html / Css / Bootstrap / Javascript / Jquery / C# / .NET CORE</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-5">
-                                        <br>
-                                        <br>
-                                        <div class="portfolio-single-item image-border">
-                                            <img src="assets/img/screen-recorder-thu-sep-02-2021-12-05-17.gif" class="d-block" alt="...">
-                                        </div>
-                                    </div>
-                                    <div class="text-md-left mt-5">
-
-                                        <p class="mt-3 mb-0"> Seeing# or otherwise pronounced as Seeing Sharp is my personal blog built for the purpose of writing about and teaching c# concepts and solutions that can be useful to developers in the C# and .Net Ecosystm.
-                                        </p>
-                                    </div>
-
-                                    <div class="button-border mt-5 mb-0 " id="visit-link">
-                                        <a href="#" class="pill-button" target="_blank">Check it out<i class="fa fa-arrow-right go "></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--  Portfolio Single Modal End  -->
-
-    <div id="pagepiling" class="pilling-page">
-
-        <!-- Social -->
-        <div class="social-box">
-            <div class="follow-label">
-                <span>Follow Me</span>
-            </div>
-            <div class="social">
-
-                <a href="https://twitter.com/umohtobby"><i class="fa fa-twitter"></i></a>
-                <a href="https://github.com/tobbyjay"><i class="fa fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/tobby-umoh-26115a13b/"><i class="fa fa-linkedin"></i></a>
-            </div>
-        </div>
-
-        <!--   Header Start -->
-        <header>
-            <div class="logo-area">
-                <a href="#hero" class="logo">
-                    <span>U<span class="base-color">T.</span></span>
-                </a>
-            </div>
-            <div class="header-info-area">
-                <a class="overlay-menu-toggler lni-menu size-md" href="javascript:void(0);"></a>
-            </div>
-        </header>
-        <!--   Header End   -->
-
-        <!--    Overlay Menu Start    -->
-        <div class="overlay-menu bg-blue py-3 px-4 text-center center-item">
-            <!-- Overlay Menu -->
-            <div id="scrollspy" class="overlay-menu-list">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto overlay-nav">
-                            <ul class="list-group text-left" id="myMenu">
-                                <li data-menuanchor="hero" class="list-group-item"><a href="#hero">Home</a></li>
-                                <li data-menuanchor="about" class="list-group-item"><a href="#about">About me</a></li>
-
-                                <li data-menuanchor="portfolio" class="list-group-item"><a href="#portfolio">Portfolio</a></li>
-                                <li data-menuanchor="blog" class="list-group-item"><a href="#contact">Contact me</a></li>
-                            </ul>
-                            <ul class="list-group contact-info text-left mb-0">
-                                <li class="list-group-item"><span>Contact Info :</span></li>
-                                <li class="list-group-item"><span><i class="lni-map-marker"></i> Ketu,Lagos.</span></li>
-                                <li class="list-group-item"><span><i class="lni-phone-handset"></i><a href="tel:07056507458">+234 705 650 7458</a> </span></li>
-                                <li class="list-group-item"><span><i class="lni-envelope"></i> <a href="mailto:tobbyumoh@gmail.com" class="__cf_email__" >tobbyumoh@gmail.com</a></span></li>
-                                <li class="list-group-item"><span>Follow me :</span></li>
-                                <li class="list-group-item">
-                                    <ul class="list-inline socails">
-
-                                        <li class="list-inline-item"><a href="https://twitter.com/umohtobby" target="_blank"><i class="lni-twitter-filled"></i></a></li>
-                                        <li class="list-inline-item"><a href="https://github.com/tobbyjay" target="_blank"><i class="lni-github-original"></i></a></li>
-                                        <li class="list-inline-item"><a href="https://www.linkedin.com/in/tobby-umoh-26115a13b/" target="_blank"><i class="lni-linkedin-original"></i></a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--    Overlay Menu End    -->
-
-        <!--  Hero Start  -->
-        <section id="hero" class="section pp-scrollable  hero-03">
-            <div class="display-table">
-                <div class="display-content">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6 order-2 order-lg-1">
-                                <div class="hero-content">
-                                    <h1 class="dark-color mb-3">Hey there, <span class="base-color"></span></h1>
-                                    <h2 class="text-darktext-capitalize mb-0"><span class="base-color">I'm  Umoh Tobby </span> <span class="element"></span></h4>
-                                        <p class="text-muted my-4">All i love to do is to write a few commands to instruct my computer to perform certain actions, the result of these actions are applications and services that solve real life problems.</p>
-                                        <div class="button-border mt-2">
-                                            <a href="#about" class="pill-button">Let's Go<i class="fa fa-arrow-down go"></i></a>
-                                        </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 order-1 order-lg-2">
-                                <div class="hero-image">
-
-                                    <div class="personal-image rounded-circle">
-                                        <img src="assets/img/63ac370a-d7fb-4dd1-9063-0c73c87d7784.webp" alt="/" class="rounded-circle img-fluid">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--  Hero End  -->
-
-        <!--   About Start   -->
-        <section id="about" class="section pp-scrollable about" data-navigation-tooltip="ABOUT ME">
-            <div class="display-table">
-                <div class="display-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="title-wrapper">
-                                    <span>Get to know me</span>
-                                </div>
-                                <div class="title-content">
-                                    <h2 class="base-color">Get to know me</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="image-border" id="about-img">
-                                    <img src="assets/img/9b47a9f2-e1cd-46de-ab23-8998ad6436cd.webp" alt="/" id="image-about-me">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mt-4 mt-lg-0">
-                                <div class="personal-item ">
-                                    <h3 class="text-dark mt-4 mt-lg-0" id="about-text"><span class="base-color">I am a</span> product oriented DotNet Developer</h3>
-                                    <div class="row">
-                                        <div class="col-6 personal-info">
-                                            <ul class="list-unstyled pt-4">
-                                                <li>
-                                                    <p>Github : <span><a href="https://github.com/tobbyjay" target="_blank"> Get a sneak peek</a></span></p>
-                                                </li>
-                                                <li>
-                                                    <p>Mini-Blog : <span><a href="https://tobby.hashnode.dev" target="_blank"> tobby.hashnode.dev</a></span></p>
-                                                </li>
-                                                <li>
-                                                    <p>Phone : <span><a href="tel:+2347056507458" target="_blank">Let's talk</a> </span></p>
-                                                </li>
-                                                <li>
-                                                    <p>City : <span> Lagos,Nigeria.</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-6 personal-info">
-                                            <ul class="list-unstyled pt-4">
-                                                <li>
-                                                    <p>LinkedIn : <span><a href="https://www.linkedin.com/in/tobby-umoh-26115a13b/" target="_blank">Let's connect</a></span></p>
-                                                </li>
-                                                <li>
-                                                    <p>Twitter : <span><a href="https://twitter.com/umohtobby" target="_blank">Let's connect</a></span></p>
-                                                </li>
-                                                <li>
-                                                    <p>Mail : <span> <a href="mailto:tobbyumoh@gmail.com" >Shoot me a mail</a></span></p>
-                                                </li>
-                                                <li>
-                                                    <p>Freelance : <span> Available</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="button-border mt-3 mb-lg-0 mr-4">
-                                    <a href="https://drive.google.com/file/d/1hSpjqgOfjGUmgWWBwNcnEirewbM-oiM5/view?usp=sharing" target="_blank" class="pill-button">View Cv</a>
-                                </div>
-
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--    About End    -->
-
-        <!--    Resume Start   -->
-        <section id="resume" class="section resume pp-scrollable" data-navigation-tooltip="RESUME">
-            <div class="display-table">
-                <div class="display-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="title-wrapper">
-                                    <span>My Skills</span>
-                                </div>
-                                <div class="title-content">
-                                    <h2 class="base-color">My Skills</h2>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--    TimeLine Start   -->
-                        <div class="row text-center ml-3">
-
-
-                            <!--  Skill Start  -->
-                            <div class="row mt-5">
-
-                                <div class="col-lg-12">
-                                    <div class="skill-boxes box-border">
-                                        <div class="row">
-                                            <!-- Skill -->
-                                            <div class="col-lg-12">
-                                                <div class="skill-box">
-                                                    <marquee>
-                                                        <div class="inline-img">
-                                                            <img class="skills-img" src="assets/img/icons8-c-sharp-logo-48.png" />
-                                                            <img class="skills-img" src="assets/img/html.png" />
-                                                            <img class="skills-img" src="assets/img/css.png" />
-                                                            <img class="skills-img" src="assets/img/js.png" />
-                                                            <img class="skills-img" src="assets/img/512px-.NET_Core_Logo.svg.png" />
-                                                            <img class="skills-img" src="assets/img/icons8-postgresql-48.png" />
-                                                            <img class="skills-img" src="assets/img/git.png" />
-                                                            <img class="skills-img" src="assets/img/sql.png" />
-                                                            <img class="skills-img-ef" src="assets/img/Entity-Framework-Logo_2colors_Square_RGB-591x360.png" />
-
-
-
-                                                        </div>
-
-                                                    </marquee>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--   Skill End   -->
-                        </div>
-                    </div>
-                </div>
-        </section>
-        <!--     Resume End    -->
-
-        <!-- Portfolio Start -->
-        <section id="portfolio" class="section pp-scrollable portfolio" data-navigation-tooltip="PORTFOLIO">
-            <div class="display-table">
-                <div class="display-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="title-wrapper">
-                                    <span>My Work</span>
-                                </div>
-                                <div class="title-content">
-                                    <h2 class="base-color">My Work</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-
-                        </div>
-                        <div class="portfolio-items row">
-
-
-                            <!-- Item 01 -->
-                            <div class="col-lg-6 portfolio-item seo" id="projects">
-                                <div class="image-border">
-                                    <div class="portfolio-item-content">
-                                        <img id="works-img" src="assets/img/Screenshot (152).png" alt="/" class="img-fluid">
-                                        <div class="img-overlay text-center">
-                                            <div class="img-overlay-content">
-                                                <div class="portfolio-icon">
-                                                    <a href="javascript:void();" type="button" data-toggle="modal" data-target="#net-facebook-modal"><i class="lni-link"></i></a>
-                                                    <a href="assets/img/Screenshot (152).png" class="js-zoom-gallery">
-                                                        <i class="lni-search"></i>
-                                                    </a>
-                                                </div>
-                                                <h5 class="mt-3 mb-0">Net.Facebook Package</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!-- Item 05 -->
-                            <div class="col-lg-6 portfolio-item graphic webdesign" id="projects">
-                                <div class="image-border">
-                                    <div class="portfolio-item-content">
-                                        <img id="works-two-img" src="assets/img/Screenshot (154).png" alt="/" class="img-fluid">
-                                        <div class="img-overlay text-center">
-                                            <div class="img-overlay-content">
-                                                <div class="portfolio-icon">
-                                                    <a href="javascript:void();" type="button" data-toggle="modal" data-target="#bot-modal"><i class="lni-link"></i></a>
-                                                    <a href="assets/img/Screenshot (154).png" class="js-zoom-gallery">
-                                                        <i class="lni-search"></i>
-                                                    </a>
-                                                </div>
-                                                <h5 class="mt-3 mb-0">Tob.by.bot</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Item 01 -->
-                            <div class="col-lg-6 portfolio-item seo" id="projects">
-                                <div class="image-border">
-                                    <div class="portfolio-item-content">
-                                        <img id="works-img" src="assets/img/Screenshot 2021-01-12 165354.png" alt="/" class="img-fluid">
-                                        <div class="img-overlay text-center">
-                                            <div class="img-overlay-content">
-                                                <div class="portfolio-icon">
-                                                    <a href="javascript:void();" type="button" data-toggle="modal" data-target="#portfolio-single"><i class="lni-link"></i></a>
-                                                    <a href="assets/img/Screenshot 2021-01-12 165354.png" class="js-zoom-gallery">
-                                                        <i class="lni-search"></i>
-                                                    </a>
-                                                </div>
-                                                <h5 class="mt-3 mb-0">Spotahub</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!-- Item 05 -->
-                            <div class="col-lg-6 portfolio-item graphic webdesign" id="projects">
-                                <div class="image-border">
-                                    <div class="portfolio-item-content">
-                                        <img id="works-two-img" src="assets/img/find-a-hub-api.PNG" alt="/" class="img-fluid">
-                                        <div class="img-overlay text-center">
-                                            <div class="img-overlay-content">
-                                                <div class="portfolio-icon">
-                                                    <a href="javascript:void();" type="button" data-toggle="modal" data-target="#spot-a-hub"><i class="lni-link"></i></a>
-                                                    <a href="assets/img/find-a-hub-api.PNG" class="js-zoom-gallery">
-                                                        <i class="lni-search"></i>
-                                                    </a>
-                                                </div>
-                                                <h5 class="mt-3 mb-0">Find-A-Hub API</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Item 03 -->
-                            <div class="col-lg-6 portfolio-item seo" id="projects">
-                                <div class="image-border">
-                                    <div class="portfolio-item-content">
-                                        <img id="works-img" src="assets/img/Screenshot (11).png" alt="/" class="img-fluid">
-                                        <div class="img-overlay text-center">
-                                            <div class="img-overlay-content">
-                                                <div class="portfolio-icon">
-                                                    <a href="javascript:void();" type="button" data-toggle="modal" data-target="#portfolio-droidcamp"><i class="lni-link"></i></a>
-                                                    <a href="assets/img/Screenshot (11).png" class="js-zoom-gallery">
-                                                        <i class="lni-search"></i>
-                                                    </a>
-                                                </div>
-                                                <h5 class="mt-3 mb-0">The DroidCamp</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Trading Ritual-->
-                            <div class="col-lg-6 portfolio-item graphic webdesign" id="projects">
-                                <div class="image-border">
-                                    <div class="portfolio-item-content">
-                                        <img id="works-two-img" src="assets/img/Trading-ritual.PNG" alt="/" class="img-fluid">
-                                        <div class="img-overlay text-center">
-                                            <div class="img-overlay-content">
-                                                <div class="portfolio-icon">
-                                                    <a href="javascript:void();" type="button" data-toggle="modal" data-target="#portfolio-trading"><i class="lni-link"></i></a>
-                                                    <a href="assets/img/Trading-ritual.PNG" class="js-zoom-gallery">
-                                                        <i class="lni-search"></i>
-                                                    </a>
-                                                </div>
-                                                <h5 class="mt-3 mb-0">Trading-Ritual</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Tobby's Blog-->
-                            <div class="col-lg-6 portfolio-item graphic webdesign" id="projects">
-                                <div class="image-border">
-                                    <div class="portfolio-item-content">
-                                        <img id="works-two-img" src="assets/img/screen-recorder-thu-sep-02-2021-12-05-17.gif" alt="/" class="img-fluid" style="width:100%;">
-                                        <div class="img-overlay text-center">
-                                            <div class="img-overlay-content">
-                                                <div class="portfolio-icon">
-                                                    <a href="javascript:void();" type="button" data-toggle="modal" data-target="#blog"><i class="lni-link"></i></a>
-                                                    <a href="assets/img/screen-recorder-thu-sep-02-2021-12-05-17.gif" class="js-zoom-gallery">
-                                                        <i class="lni-search"></i>
-                                                    </a>
-                                                </div>
-                                                <h5 class="mt-3 mb-0">My Blog</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-                            <!-- Item 05 -->
-                            <div class="col-lg-6 portfolio-item graphic webdesign" id="projects">
-                                <div class="image-border">
-                                    <div class="portfolio-item-content">
-                                        <img id="works-two-img" src="assets/img/Screenshot (8).png" alt="/" class="img-fluid">
-                                        <div class="img-overlay text-center">
-                                            <div class="img-overlay-content">
-                                                <div class="portfolio-icon">
-                                                    <a href="javascript:void();" type="button" data-toggle="modal" data-target="#portfolio-mini-hospital"><i class="lni-link"></i></a>
-                                                    <a href="assets/img/Screenshot (8).png" class="js-zoom-gallery">
-                                                        <i class="lni-search"></i>
-                                                    </a>
-                                                </div>
-                                                <h5 class="mt-3 mb-0">Mini-Hospital</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!-- Item 05 -->
-                            <div class="col-lg-6 portfolio-item graphic webdesign" id="projects">
-                                <div class="image-border">
-                                    <div class="portfolio-item-content">
-                                        <img id="works-two-img" src="assets/img/screencapture-coinfarm-001-site1-itempurl-user-index-2021-06-16-22_07_17.png" alt="/" class="img-fluid">
-                                        <div class="img-overlay text-center">
-                                            <div class="img-overlay-content">
-                                                <div class="portfolio-icon">
-                                                    <a href="javascript:void();" type="button" data-toggle="modal" data-target="#portfolio-coinfarm"><i class="lni-link"></i></a>
-                                                    <a href="assets/img/screencapture-coinfarm-001-site1-itempurl-user-index-2021-06-16-22_07_17.png" class="js-zoom-gallery">
-                                                        <i class="lni-search"></i>
-                                                    </a>
-                                                </div>
-                                                <h5 class="mt-3 mb-0">CoinFarm</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!-- Item 04 -->
-                            <div class="col-lg-6 portfolio-item graphic webdesign" id="projects">
-                                <div class="image-border">
-                                    <div class="portfolio-item-content">
-                                        <img id="works-two-img" src="assets/img/Screenshot (10).png" alt="/" class="img-fluid">
-                                        <div class="img-overlay text-center">
-                                            <div class="img-overlay-content">
-                                                <div class="portfolio-icon">
-                                                    <a href="javascript:void();" type="button" data-toggle="modal" data-target="#portfolio-Emov"><i class="lni-link"></i></a>
-                                                    <a href="assets/img/Screenshot (10).png" class="js-zoom-gallery">
-                                                        <i class="lni-search"></i>
-                                                    </a>
-                                                </div>
-                                                <h5 class="mt-3 mb-0">E-Mov</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Item 02 -->
-                            <div class="col-lg-6 portfolio-item graphic webdesign" id="projects">
-                                <div class="image-border">
-                                    <div class="portfolio-item-content">
-                                        <img id="works-two-img" src="assets/img/Screenshot 2021-01-12 172724.png" alt="/" class="img-fluid">
-                                        <div class="img-overlay text-center">
-                                            <div class="img-overlay-content">
-                                                <div class="portfolio-icon">
-                                                    <a href="javascript:void();" type="button" data-toggle="modal" data-target="#portfolio-foodaee"><i class="lni-link"></i></a>
-                                                    <a href="assets/img/Screenshot 2021-01-12 172724.png" class="js-zoom-gallery">
-                                                        <i class="lni-search"></i>
-                                                    </a>
-                                                </div>
-                                                <h5 class="mt-3 mb-0">Foodaee</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                        </div>
-                    </div>
-                </div>
-        </section>
-        <!--  Portfolio End  -->
-
-
-
-
-        <!-- Contact Start -->
-        <section id="contact" class="section pp-scrollable contact" data-navigation-tooltip="CONTACT">
-            <div class="display-table">
-                <div class="display-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="title-wrapper">
-                                    <span>Get In Touch</span>
-                                </div>
-                                <div class="title-content">
-                                    <h2 class="base-color">Get In Touch</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row contact-info">
-                            <div class="col-lg-6">
-                                <div class="contact-info-text text-center">
-                                    <div class="base-color">
-                                        <img src="assets/img/phone.svg" alt="">
-                                    </div>
-                                    <div class="mt-3">
-                                        <h5 class="text-dark mb-0">Call Me On</h5>
-                                        <small class="text-muted"><a href="tel:+2347056507458">+(234) 705 650 7458</a></small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="contact-info-text text-center">
-                                    <div class="base-color">
-                                        <img src="assets/img/send.svg" alt="">
-                                    </div>
-                                    <div class="mt-3">
-                                        <h5 class="text-dark mb-0">Email me At</h5>
-                                        <small class="text-muted"><a href="mailto:tobbyumoh@gmail.com">tobbyumoh@gmail.com</a></small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row copy-right">
-                            <div class="col-12 text-center text-dark">
-                                <p>Copyright ©
-                                    <script type="text/javascript">
-                                        document.write(new Date().getFullYear());
-                                    </script>.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--  Contact End  -->
-
-        <!-- Start Options -->
-        <div id="color-switcher" class="color-switcher">
-            <div class="text-center color-pallet hide">
-                <h6 class="theme-skin-title">Theme Skin</h6>
-                <ul class="theme-skin list-inline">
-                    <li class="list-inline-item">
-                        <a href="javascript:void(0)" class="flat-skin active">Flat</a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="javascript:void(0)" class="neo-skin">Neo</a>
-                    </li>
-                </ul>
-                <h6 class="my-2 color-scheme-title">Light & Dark Version</h6>
-                <ul class="color-scheme list-inline">
-                    <li class="list-inline-item">
-                        <a href="javascript:void(0)" class="light-scheme active"><i class="lni-sun"></i> Light</a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="javascript:void(0)" class="dark-scheme"><i class="lni-night"></i> Dark</a>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-        <!-- End Options -->
-        </div>
-
-        <script src="//cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js" type="text/javascript"></script>
-        <!--  JavaScripts  -->
-        <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-        <script src="assets/js/jquery-3.4.1.min.js"></script>
-        <!--  Bootstrap Js  -->
-        <script src="assets/js/bootstrap.js"></script>
-        <!--  Page Pilling Js  -->
-        <script src="assets/js/pagePiling.js"></script>
-        <!--  Easing Js  -->
-        <script src="assets/js/jquery.easing.min.js"></script>
-        <!--  CountTo Js  -->
-        <script src="assets/js/jquery.countTo.js"></script>
-        <!--  Typed Js  -->
-        <!-- <script src="assets/js/typed.js"></script> -->
-        <!--  Magnific Popup Js  -->
-        <script src="assets/js/jquery.magnific-popup.min.js"></script>
-        <!--  Isotope Js  -->
-        <script src="assets/js/isotope.pkgd.min.js"></script>
-        <!--  Owl Carousel Js  -->
-        <script src="assets/js/owl.carousel.min.js"></script>
-        <!--  Custom JS  -->
-        <script src="assets/js/main.js"></script>
-
+      </div>
+    </section>
+
+    <footer>
+      <span>© <span id="year"></span> Tobby Umoh.</span>
+      <span>Backend systems, reliability, developer tools.</span>
+    </footer>
+  </main>
+
+  <script>
+    const year = document.getElementById('year');
+    year.textContent = new Date().getFullYear();
+
+    const mobileMenu = document.querySelector('.mobile-menu');
+    mobileMenu?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => mobileMenu.removeAttribute('open'));
+    });
+
+    const copyButton = document.getElementById('copyEmail');
+    copyButton.addEventListener('click', async () => {
+      const email = 'tobbyumoh@gmail.com';
+      try {
+        await navigator.clipboard.writeText(email);
+        const original = copyButton.innerHTML;
+        copyButton.innerHTML = 'Copied <span>✓</span>';
+        setTimeout(() => { copyButton.innerHTML = original; }, 1600);
+      } catch (err) {
+        window.location.href = `mailto:${email}`;
+      }
+    });
+  </script>
 </body>
-
 </html>
