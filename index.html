@@ -6,9 +6,14 @@
   <title>Tobby Umoh — Backend Engineer</title>
   <meta name="description" content="Tobby Umoh is a backend engineer in Lagos, Nigeria, working across .NET, backend systems, APIs, background jobs, observability, production reliability, and developer tools." />
   <meta name="author" content="Tobby Umoh" />
+  <link rel="canonical" href="https://tobbyumoh.netlify.app" />
   <meta property="og:title" content="Tobby Umoh — Backend Engineer" />
   <meta property="og:description" content="Backend engineer working across .NET, backend systems, production reliability, and developer tools." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tobbyumoh.netlify.app" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Tobby Umoh — Backend Engineer" />
+  <meta name="twitter:description" content="Backend engineer working across .NET, backend systems, production reliability, and developer tools." />
   <meta name="theme-color" content="#f5efe3" />
   <style>
     :root {
@@ -17,14 +22,35 @@
       --ink: #171512;
       --muted: #6f675c;
       --soft: #8c8274;
-      --line: #dfd4c2;
-      --line-strong: #cdbda6;
+      --line: #d8cab6;
+      --line-strong: #c5b397;
       --accent: #1d4b43;
       --accent-2: #8b5e34;
+      --topbar-bg: rgba(245, 239, 227, .82);
+      --card-bg: rgba(255, 250, 241, .68);
+      --card-bg-strong: rgba(255, 250, 241, .9);
       --shadow: 0 20px 60px rgba(49, 38, 25, .08);
       --radius: 24px;
       --radius-sm: 14px;
       --max: 1120px;
+      --focus-ring: 0 0 0 4px rgba(29, 75, 67, .18);
+    }
+
+    [data-theme="dark"] {
+      --bg: #11100e;
+      --paper: #1b1915;
+      --ink: #f6efe4;
+      --muted: #b7aa97;
+      --soft: #9c907f;
+      --line: #342f28;
+      --line-strong: #4a4035;
+      --accent: #8fc8b9;
+      --accent-2: #d5aa76;
+      --topbar-bg: rgba(17, 16, 14, .82);
+      --card-bg: rgba(27, 25, 21, .72);
+      --card-bg-strong: rgba(27, 25, 21, .94);
+      --shadow: 0 20px 60px rgba(0, 0, 0, .28);
+      --focus-ring: 0 0 0 4px rgba(143, 200, 185, .18);
     }
 
     * { box-sizing: border-box; }
@@ -39,22 +65,26 @@
       font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at 20% 0%, rgba(29, 75, 67, .08), transparent 36rem),
-        radial-gradient(circle at 100% 10%, rgba(139, 94, 52, .09), transparent 34rem),
+        radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 36rem),
+        radial-gradient(circle at 100% 10%, color-mix(in srgb, var(--accent-2) 11%, transparent), transparent 34rem),
         var(--bg);
       line-height: 1.55;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
+      transition: background .2s ease, color .2s ease;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
 
     ::selection {
       color: var(--paper);
       background: var(--accent);
+    }
+
+    :focus-visible {
+      outline: 0;
+      box-shadow: var(--focus-ring);
     }
 
     .page {
@@ -67,8 +97,8 @@
       top: 0;
       z-index: 20;
       backdrop-filter: blur(18px);
-      background: rgba(245, 239, 227, .78);
-      border-bottom: 1px solid rgba(223, 212, 194, .7);
+      background: var(--topbar-bg);
+      border-bottom: 1px solid color-mix(in srgb, var(--line) 82%, transparent);
     }
 
     .nav {
@@ -87,6 +117,7 @@
       gap: 12px;
       font-weight: 700;
       letter-spacing: -0.02em;
+      border-radius: 999px;
     }
 
     .mark {
@@ -109,16 +140,34 @@
       font-size: 14px;
     }
 
-    .navlinks a {
+    .navlinks a,
+    .theme-toggle {
       padding: 8px 10px;
       border-radius: 999px;
-      transition: color .2s ease, background .2s ease;
+      transition: color .2s ease, background .2s ease, border-color .2s ease;
     }
 
-    .navlinks a:hover {
+    .navlinks a:hover,
+    .navlinks a.active {
       color: var(--ink);
-      background: rgba(255, 250, 241, .8);
+      background: var(--card-bg-strong);
     }
+
+    .navlinks a.active {
+      box-shadow: inset 0 -1px 0 var(--line-strong);
+    }
+
+    .theme-toggle {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: var(--card-bg);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .theme-toggle:hover { color: var(--ink); border-color: var(--line-strong); }
 
     .mobile-menu {
       display: none;
@@ -129,7 +178,7 @@
       list-style: none;
       appearance: none;
       border: 1px solid var(--line-strong);
-      background: rgba(255, 250, 241, .72);
+      background: var(--card-bg);
       color: var(--ink);
       border-radius: 999px;
       padding: 9px 12px;
@@ -154,17 +203,18 @@
       position: absolute;
       top: calc(100% + 10px);
       right: 0;
-      width: min(260px, calc(100vw - 28px));
+      width: min(270px, calc(100vw - 28px));
       display: grid;
       gap: 4px;
       padding: 8px;
       border: 1px solid var(--line);
       border-radius: 18px;
-      background: rgba(255, 250, 241, .98);
+      background: var(--card-bg-strong);
       box-shadow: var(--shadow);
     }
 
-    .mobile-panel a {
+    .mobile-panel a,
+    .mobile-panel button {
       padding: 12px 14px;
       border-radius: 12px;
       color: var(--muted);
@@ -172,18 +222,31 @@
       transition: color .2s ease, background .2s ease;
     }
 
-    .mobile-panel a:hover {
+    .mobile-panel a { display: block; }
+
+    .mobile-panel button {
+      appearance: none;
+      border: 0;
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .mobile-panel a:hover,
+    .mobile-panel a.active,
+    .mobile-panel button:hover {
       color: var(--ink);
-      background: rgba(245, 239, 227, .7);
+      background: color-mix(in srgb, var(--bg) 72%, transparent);
     }
 
     .hero {
       padding: 92px 0 80px;
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
+      grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr);
       gap: 56px;
       align-items: end;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--line-strong);
     }
 
     .eyebrow {
@@ -222,12 +285,10 @@
       letter-spacing: -0.04em;
       max-width: 760px;
       margin: 0;
-      color: #29241e;
+      color: color-mix(in srgb, var(--ink) 88%, var(--muted));
     }
 
-    .lead span {
-      color: var(--muted);
-    }
+    .lead span { color: var(--muted); }
 
     .hero-actions {
       display: flex;
@@ -263,13 +324,13 @@
     }
 
     .btn.secondary { background: transparent; }
-    .btn.secondary:hover { background: var(--paper); }
+    .btn.secondary:hover { background: var(--card-bg-strong); }
 
     .profile-card {
-      padding: 22px;
+      padding: 24px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(255, 250, 241, .72);
+      background: var(--card-bg);
       box-shadow: var(--shadow);
     }
 
@@ -295,7 +356,7 @@
 
     .profile-top strong {
       display: block;
-      font-size: 16px;
+      font-size: 17px;
       line-height: 1.2;
     }
 
@@ -303,36 +364,41 @@
       display: block;
       margin-top: 3px;
       color: var(--muted);
-    }
-
-    .mini-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 12px;
-    }
-
-    .mini-list li {
-      display: grid;
-      grid-template-columns: 92px 1fr;
-      gap: 12px;
-      align-items: baseline;
-      padding-top: 12px;
-      border-top: 1px solid var(--line);
       font-size: 14px;
     }
 
-    .mini-list b {
+    .current-list {
+      display: grid;
+      gap: 0;
+      margin: 0;
+    }
+
+    .current-row {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 14px;
+      align-items: baseline;
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+      font-size: 15px;
+    }
+
+    .current-row dt {
       color: var(--soft);
       font-size: 12px;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: .1em;
     }
 
+    .current-row dd {
+      margin: 0;
+      color: color-mix(in srgb, var(--ink) 83%, var(--muted));
+    }
+
     section {
       padding: 74px 0;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--line-strong);
     }
 
     .section-head {
@@ -344,11 +410,23 @@
     }
 
     .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       color: var(--accent-2);
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 800;
-      letter-spacing: .14em;
+      letter-spacing: .12em;
       text-transform: uppercase;
+    }
+
+    .section-kicker::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: currentColor;
+      opacity: .85;
     }
 
     h2 {
@@ -377,7 +455,7 @@
       border: 1px solid var(--line);
       border-radius: var(--radius-sm);
       padding: 19px;
-      background: rgba(255, 250, 241, .55);
+      background: color-mix(in srgb, var(--card-bg) 80%, transparent);
       min-height: 180px;
     }
 
@@ -401,10 +479,7 @@
       font-size: 14px;
     }
 
-    .work-list {
-      display: grid;
-      gap: 14px;
-    }
+    .work-list { display: grid; gap: 14px; }
 
     .work-item {
       display: grid;
@@ -414,14 +489,14 @@
       padding: 24px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(255, 250, 241, .62);
+      background: color-mix(in srgb, var(--card-bg) 88%, transparent);
       transition: border-color .2s ease, transform .2s ease, background .2s ease;
     }
 
     .work-item:hover {
       transform: translateY(-2px);
       border-color: var(--line-strong);
-      background: rgba(255, 250, 241, .88);
+      background: var(--card-bg-strong);
     }
 
     .work-meta {
@@ -453,14 +528,43 @@
       gap: 7px;
     }
 
-    .tag {
+    .tag,
+    .note-status {
       border: 1px solid var(--line);
       border-radius: 999px;
       padding: 5px 9px;
       color: var(--muted);
-      background: rgba(245, 239, 227, .55);
+      background: color-mix(in srgb, var(--bg) 58%, transparent);
       font-size: 12px;
       white-space: nowrap;
+    }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .archive-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      background: color-mix(in srgb, var(--card-bg) 72%, transparent);
+    }
+
+    .archive-card strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 5px;
+      letter-spacing: -.02em;
+    }
+
+    .archive-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
     }
 
     .writing-grid {
@@ -472,12 +576,20 @@
     .note-card {
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(255, 250, 241, .58);
+      background: color-mix(in srgb, var(--card-bg) 82%, transparent);
       padding: 24px;
     }
 
+    .note-card header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
     .note-card h3 {
-      margin: 0 0 12px;
+      margin: 0;
       font-size: 22px;
       letter-spacing: -.035em;
     }
@@ -488,59 +600,11 @@
       font-size: 15px;
     }
 
-    .timeline {
-      display: grid;
-      gap: 0;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: rgba(255, 250, 241, .5);
-    }
-
-    .timeline-row {
-      display: grid;
-      grid-template-columns: 170px minmax(0, 1fr);
-      gap: 24px;
-      padding: 22px 24px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .timeline-row:last-child { border-bottom: 0; }
-
-    .timeline-row time {
-      color: var(--soft);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .timeline-row h3 {
-      margin: 0 0 6px;
-      font-size: 19px;
-      letter-spacing: -.03em;
-    }
-
-    .timeline-row p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .archive {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 26px;
-    }
-
-    .archive span {
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      color: var(--muted);
-      background: rgba(255, 250, 241, .55);
-      font-size: 13px;
+    .note-status {
+      color: var(--accent-2);
+      border-color: color-mix(in srgb, var(--accent-2) 35%, var(--line));
+      background: transparent;
+      flex: 0 0 auto;
     }
 
     .contact-box {
@@ -555,28 +619,28 @@
       color: var(--paper);
     }
 
-    .contact-box h2 {
-      color: var(--paper);
-      max-width: 680px;
+    [data-theme="dark"] .contact-box {
+      background: #f6efe4;
+      color: #171512;
     }
 
+    .contact-box h2 { color: inherit; max-width: 680px; }
+
     .contact-box p {
-      color: rgba(255, 250, 241, .72);
+      color: color-mix(in srgb, currentColor 72%, transparent);
       margin: 18px 0 0;
       max-width: 680px;
       font-size: 17px;
     }
 
-    .contact-links {
-      display: grid;
-      gap: 10px;
-    }
+    .contact-links { display: grid; gap: 10px; }
 
-    .contact-links a, .contact-links button {
+    .contact-links a,
+    .contact-links button {
       appearance: none;
-      border: 1px solid rgba(255, 250, 241, .22);
-      color: var(--paper);
-      background: rgba(255, 250, 241, .06);
+      border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+      color: inherit;
+      background: color-mix(in srgb, currentColor 6%, transparent);
       border-radius: 16px;
       padding: 14px 16px;
       font: inherit;
@@ -588,9 +652,37 @@
       transition: background .2s ease, border-color .2s ease;
     }
 
-    .contact-links a:hover, .contact-links button:hover {
-      background: rgba(255, 250, 241, .12);
-      border-color: rgba(255, 250, 241, .36);
+    .contact-links a:hover,
+    .contact-links button:hover {
+      background: color-mix(in srgb, currentColor 12%, transparent);
+      border-color: color-mix(in srgb, currentColor 36%, transparent);
+    }
+
+    .contact-links span { opacity: .72; }
+
+    .back-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 30;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background: var(--card-bg-strong);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .back-top.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
     }
 
     footer {
@@ -603,75 +695,83 @@
       font-size: 13px;
     }
 
-    .quiet-link {
-      color: var(--ink);
-      border-bottom: 1px solid var(--line-strong);
-    }
-
     @media (max-width: 900px) {
       .hero,
       .section-head,
-      .contact-box {
-        grid-template-columns: 1fr;
-      }
-
+      .contact-box { grid-template-columns: 1fr; }
       .hero { padding-top: 68px; }
-
-      .profile-card { max-width: 520px; }
-
+      .profile-card { max-width: 560px; }
       .focus-grid { grid-template-columns: 1fr 1fr; }
-
-      .work-item {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-
+      .work-item { grid-template-columns: 1fr; gap: 14px; }
       .tags { justify-content: flex-start; }
+      .archive-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 640px) {
       .page, .nav { width: min(calc(100% - 28px), var(--max)); }
       .nav { min-height: 64px; position: relative; }
-      .brand span:last-child { display: inline; }
       .navlinks { display: none; }
       .mobile-menu { display: block; }
       .hero { padding: 54px 0 58px; }
       h1 { font-size: clamp(58px, 18vw, 84px); }
       .lead { font-size: 21px; }
       section { padding: 56px 0; }
-      .focus-grid, .writing-grid { grid-template-columns: 1fr; }
-      .timeline-row, .mini-list li { grid-template-columns: 1fr; gap: 8px; }
+      .focus-grid, .writing-grid, .archive-grid { grid-template-columns: 1fr; }
+      .current-row { grid-template-columns: 1fr; gap: 5px; }
       .contact-box { padding: 24px; }
+      .note-card header { display: block; }
+      .note-status { display: inline-block; margin-top: 10px; }
       footer { flex-direction: column; align-items: flex-start; }
+      .back-top { right: 14px; bottom: 14px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
     }
   </style>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Tobby Umoh",
-      "url": "https://tobbyumoh.netlify.app",
-      "email": "mailto:tobbyumoh@gmail.com",
-      "jobTitle": "Backend Engineer",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Lagos",
-        "addressCountry": "Nigeria"
-      },
-      "knowsAbout": [
-        ".NET",
-        "Backend Engineering",
-        "Distributed Systems",
-        "Observability",
-        "Production Reliability",
-        "System Design",
-        "Developer Tools"
-      ],
-      "sameAs": [
-        "https://github.com/tobbyjay",
-        "https://www.linkedin.com/in/tobby-umoh-26115a13b/",
-        "https://x.com/_tobbyumoh",
-        "https://tobby.hashnode.dev/"
+      "@graph": [
+        {
+          "@type": "Person",
+          "name": "Tobby Umoh",
+          "url": "https://tobbyumoh.netlify.app",
+          "email": "mailto:tobbyumoh@gmail.com",
+          "jobTitle": "Backend Engineer",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lagos",
+            "addressCountry": "Nigeria"
+          },
+          "knowsAbout": [
+            ".NET",
+            "Backend Engineering",
+            "Distributed Systems",
+            "Observability",
+            "Production Reliability",
+            "System Design",
+            "Developer Tools"
+          ],
+          "sameAs": [
+            "https://github.com/tobbyjay",
+            "https://www.linkedin.com/in/tobby-umoh-26115a13b/",
+            "https://x.com/_tobbyumoh",
+            "https://tobby.hashnode.dev/"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "name": "Tobby Umoh",
+          "url": "https://tobbyumoh.netlify.app",
+          "description": "Personal website of Tobby Umoh, a backend engineer focused on .NET, production reliability, distributed systems, and developer tools."
+        }
       ]
     }
   </script>
@@ -688,6 +788,7 @@
         <a href="#work">Work</a>
         <a href="#writing">Notes</a>
         <a href="#contact">Contact</a>
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">Dark</button>
       </div>
       <details class="mobile-menu">
         <summary>Menu <span>↓</span></summary>
@@ -696,6 +797,7 @@
           <a href="#work">Work</a>
           <a href="#writing">Notes</a>
           <a href="#contact">Contact</a>
+          <button type="button" data-theme-toggle aria-label="Toggle dark mode">Dark mode</button>
         </div>
       </details>
     </nav>
@@ -712,7 +814,7 @@
         <div class="hero-actions">
           <a class="btn primary" href="mailto:tobbyumoh@gmail.com">Email me</a>
           <a class="btn secondary" href="#work">See selected work</a>
-          <a class="btn secondary" href="https://github.com/tobbyjay" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn secondary" href="https://github.com/tobbyjay" target="_blank" rel="noreferrer">GitHub ↗</a>
         </div>
       </div>
 
@@ -724,12 +826,12 @@
             <small>Building, writing, and sharpening the craft.</small>
           </div>
         </div>
-        <ul class="mini-list">
-          <li><b>Work</b><span>Backend engineering, systems design, and production problem-solving.</span></li>
-          <li><b>Build</b><span>Foveus, one of the tools I am building around backend execution clarity.</span></li>
-          <li><b>Focus</b><span>.NET, distributed systems, jobs, APIs, observability, reliability.</span></li>
-          <li><b>Public</b><span>Sharing lessons from designing systems and learning production engineering.</span></li>
-        </ul>
+        <dl class="current-list">
+          <div class="current-row"><dt>Work</dt><dd>Backend engineering, systems design, and production problem-solving.</dd></div>
+          <div class="current-row"><dt>Build</dt><dd>Foveus, one of the tools I am building around backend execution clarity.</dd></div>
+          <div class="current-row"><dt>Focus</dt><dd>.NET, distributed systems, jobs, APIs, observability, reliability.</dd></div>
+          <div class="current-row"><dt>Public</dt><dd>Sharing lessons from designing systems and learning production engineering.</dd></div>
+        </dl>
       </aside>
     </section>
 
@@ -813,14 +915,13 @@
         </article>
       </div>
 
-      <div class="archive" aria-label="Older projects">
-        <span>Net.Facebook</span>
-        <span>Tob.by.bot</span>
-        <span>Spotahub</span>
-        <span>Find-A-Hub API</span>
-        <span>Mini-Hospital</span>
-        <span>Foodaee</span>
-        <span>CoinFarm</span>
+      <div class="archive-grid" aria-label="Older projects with context">
+        <div class="archive-card"><strong>Net.Facebook</strong><span>Earlier package work around API integration and developer-facing abstractions.</span></div>
+        <div class="archive-card"><strong>Tob.by.bot</strong><span>Bot experiment from an earlier stage of learning and shipping small tools.</span></div>
+        <div class="archive-card"><strong>Spotahub</strong><span>Product/API build from the earlier portfolio era.</span></div>
+        <div class="archive-card"><strong>Find-A-Hub API</strong><span>API-focused project around discovery and structured backend endpoints.</span></div>
+        <div class="archive-card"><strong>Mini-Hospital</strong><span>Small domain-system experiment from the archive.</span></div>
+        <div class="archive-card"><strong>Foodaee / CoinFarm</strong><span>Older experiments kept as historical proof of consistent building.</span></div>
       </div>
     </section>
 
@@ -829,25 +930,37 @@
         <div class="section-kicker">Notes</div>
         <div>
           <h2 id="writing-title">Lessons from designing systems and learning production engineering.</h2>
-          <p class="section-copy">This should grow into a proper writing index over time. For now, it is a map of the topics I am actively writing through, with the actual public trail living on Hashnode, LinkedIn, and X.</p>
+          <p class="section-copy">The writing index is intentionally early. These are the themes I am turning into public notes; published pieces can be linked here as they go live.</p>
         </div>
       </div>
 
       <div class="writing-grid">
         <article class="note-card">
-          <h3>Production debugging</h3>
+          <header>
+            <h3>Production debugging</h3>
+            <span class="note-status">Writing in progress</span>
+          </header>
           <p>Moving from symptoms to evidence: logs, timelines, correlation IDs, job state, integration responses, and database truth.</p>
         </article>
         <article class="note-card">
-          <h3>Reliability patterns</h3>
+          <header>
+            <h3>Reliability patterns</h3>
+            <span class="note-status">Writing in progress</span>
+          </header>
           <p>Idempotency, retries, webhooks, outbox, reconciliation, rate limits, fallbacks, and failure boundaries.</p>
         </article>
         <article class="note-card">
-          <h3>.NET backend engineering</h3>
+          <header>
+            <h3>.NET backend engineering</h3>
+            <span class="note-status">Writing in progress</span>
+          </header>
           <p>Practical notes from building APIs and workers with C#, ASP.NET Core, SQL, Redis, background jobs, and integrations.</p>
         </article>
         <article class="note-card">
-          <h3>Building without the noise</h3>
+          <header>
+            <h3>Building without the noise</h3>
+            <span class="note-status">Writing in progress</span>
+          </header>
           <p>Shipping notes, edge cases, product thinking, and honest tradeoffs without turning every small update into a performance.</p>
         </article>
       </div>
@@ -860,12 +973,12 @@
           <p>Reach out for backend engineering conversations, Foveus feedback, technical writing, .NET systems, production reliability, or collaboration around developer tools.</p>
         </div>
         <div class="contact-links">
-          <a href="mailto:tobbyumoh@gmail.com">Email <span>→</span></a>
-          <a href="https://github.com/tobbyjay" target="_blank" rel="noreferrer">GitHub <span>→</span></a>
-          <a href="https://www.linkedin.com/in/tobby-umoh-26115a13b/" target="_blank" rel="noreferrer">LinkedIn <span>→</span></a>
-          <a href="https://x.com/_tobbyumoh" target="_blank" rel="noreferrer">X / Twitter <span>→</span></a>
-          <a href="https://tobby.hashnode.dev/" target="_blank" rel="noreferrer">Hashnode <span>→</span></a>
-          <button type="button" id="copyEmail">Copy email <span>↗</span></button>
+          <a href="mailto:tobbyumoh@gmail.com">Email <span aria-hidden="true">→</span></a>
+          <a href="https://github.com/tobbyjay" target="_blank" rel="noreferrer" aria-label="GitHub, opens in a new tab">GitHub <span aria-hidden="true">↗</span></a>
+          <a href="https://www.linkedin.com/in/tobby-umoh-26115a13b/" target="_blank" rel="noreferrer" aria-label="LinkedIn, opens in a new tab">LinkedIn <span aria-hidden="true">↗</span></a>
+          <a href="https://x.com/_tobbyumoh" target="_blank" rel="noreferrer" aria-label="X or Twitter, opens in a new tab">X / Twitter <span aria-hidden="true">↗</span></a>
+          <a href="https://tobby.hashnode.dev/" target="_blank" rel="noreferrer" aria-label="Hashnode, opens in a new tab">Hashnode <span aria-hidden="true">↗</span></a>
+          <button type="button" id="copyEmail">Copy email <span aria-hidden="true">⧉</span></button>
         </div>
       </div>
     </section>
@@ -876,6 +989,8 @@
     </footer>
   </main>
 
+  <button type="button" class="back-top" id="backTop" aria-label="Back to top">↑</button>
+
   <script>
     const year = document.getElementById('year');
     year.textContent = new Date().getFullYear();
@@ -885,17 +1000,72 @@
       link.addEventListener('click', () => mobileMenu.removeAttribute('open'));
     });
 
+    const themeButtons = document.querySelectorAll('[data-theme-toggle]');
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    const storedTheme = localStorage.getItem('theme');
+
+    function applyTheme(theme) {
+      document.documentElement.dataset.theme = theme;
+      localStorage.setItem('theme', theme);
+      themeMeta?.setAttribute('content', theme === 'dark' ? '#11100e' : '#f5efe3');
+      themeButtons.forEach((button) => {
+        const nextLabel = theme === 'dark' ? 'Light' : 'Dark';
+        button.textContent = button.closest('.mobile-panel') ? `${nextLabel} mode` : nextLabel;
+        button.setAttribute('aria-pressed', String(theme === 'dark'));
+      });
+    }
+
+    applyTheme(storedTheme === 'dark' ? 'dark' : 'light');
+
+    themeButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const current = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+        applyTheme(current === 'dark' ? 'light' : 'dark');
+        mobileMenu?.removeAttribute('open');
+      });
+    });
+
     const copyButton = document.getElementById('copyEmail');
-    copyButton.addEventListener('click', async () => {
+    copyButton?.addEventListener('click', async () => {
       const email = 'tobbyumoh@gmail.com';
       try {
         await navigator.clipboard.writeText(email);
         const original = copyButton.innerHTML;
-        copyButton.innerHTML = 'Copied <span>✓</span>';
+        copyButton.innerHTML = 'Copied <span aria-hidden="true">✓</span>';
         setTimeout(() => { copyButton.innerHTML = original; }, 1600);
       } catch (err) {
         window.location.href = `mailto:${email}`;
       }
+    });
+
+    const navAnchors = document.querySelectorAll('.navlinks a, .mobile-panel a');
+    const sections = [...document.querySelectorAll('section[id]')];
+
+    function setActiveNav(id) {
+      navAnchors.forEach((anchor) => {
+        const isActive = anchor.getAttribute('href') === `#${id}`;
+        anchor.classList.toggle('active', isActive);
+        if (isActive) anchor.setAttribute('aria-current', 'true');
+        else anchor.removeAttribute('aria-current');
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible?.target?.id) setActiveNav(visible.target.id);
+    }, { rootMargin: '-34% 0px -52% 0px', threshold: [0.08, 0.22, 0.5] });
+
+    sections.forEach((section) => observer.observe(section));
+
+    const backTop = document.getElementById('backTop');
+    window.addEventListener('scroll', () => {
+      backTop?.classList.toggle('is-visible', window.scrollY > 520);
+    }, { passive: true });
+
+    backTop?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 </body>
