@@ -230,14 +230,14 @@
     .hero {
       padding: 84px 0 68px;
       display: grid;
-      gap: 42px;
+      gap: 44px;
     }
 
     .hero-top {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(360px, 420px);
-      gap: 52px;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
       align-items: center;
+      gap: clamp(34px, 6vw, 70px);
     }
 
     .eyebrow {
@@ -273,9 +273,11 @@
     }
 
     .hero-note {
-      margin: 16px 0 0;
+      margin: 18px 0 0;
       color: var(--soft);
       font-size: 14px;
+      font-weight: 520;
+      max-width: 620px;
     }
 
     .hero-actions {
@@ -324,15 +326,16 @@
 
     .terminal {
       width: 100%;
-      min-height: 254px;
-      border: 1px solid rgba(212, 165, 116, .5);
+      max-width: 420px;
+      justify-self: end;
+      border: 1px solid color-mix(in srgb, var(--accent) 38%, var(--line));
       border-radius: 16px;
       background: var(--terminal);
       box-shadow: 0 18px 50px var(--terminal-shadow);
-      padding: 24px 24px;
+      padding: 20px;
       font-family: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 13.5px;
-      line-height: 1.72;
+      font-size: 13px;
+      line-height: 1.68;
       color: var(--ink);
       transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
     }
@@ -427,11 +430,11 @@
 
     .section-kicker::before {
       content: "";
-      width: 9px;
-      height: 9px;
+      width: 8px;
+      height: 8px;
       border-radius: 999px;
       background: var(--accent);
-      opacity: .9;
+      opacity: .95;
     }
 
     .section-kicker:hover { color: var(--accent); }
@@ -458,21 +461,31 @@
 
     .item {
       display: grid;
-      grid-template-columns: 180px 1fr auto;
+      grid-template-columns: 150px 1fr auto;
       gap: 24px;
-      padding: 24px 0;
+      padding: 26px 0;
       border-bottom: 1px solid var(--line);
       align-items: baseline;
-      border-radius: 14px;
-      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, padding-left .2s ease, padding-right .2s ease;
+      transition: transform .2s ease, border-color .2s ease, color .2s ease;
     }
 
     .item:hover {
-      transform: translateY(-2px);
-      background: var(--paper-soft);
-      box-shadow: 0 14px 36px rgba(58, 47, 34, .055);
-      padding-left: 14px;
-      padding-right: 14px;
+      transform: translateY(-1px);
+      border-color: color-mix(in srgb, var(--accent) 42%, var(--line));
+    }
+
+    .item-featured,
+    .item-archive {
+      background: transparent;
+    }
+
+    .item-meta,
+    .badge-group {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      white-space: nowrap;
     }
 
     .item-date,
@@ -511,31 +524,20 @@
       display: inline-flex;
       align-items: center;
       border: 1px solid var(--line);
-      background: var(--paper-soft);
+      background: transparent;
       border-radius: 999px;
-      padding: 4px 8px;
+      padding: 3px 8px;
       color: var(--soft);
       font-size: 12px;
+      font-weight: 680;
       white-space: nowrap;
     }
 
-    .archive-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px 18px;
-      margin: 18px 0 0;
-      padding: 0;
-      list-style: none;
-      max-width: 680px;
-    }
-
-    .archive-list li {
+    .archive-inline {
       color: var(--muted);
-      font-size: 14px;
-      line-height: 1.45;
     }
 
-    .archive-list strong {
+    .archive-inline strong {
       color: var(--ink);
       font-weight: 720;
     }
@@ -564,19 +566,20 @@
     .card-icon {
       display: inline-grid;
       place-items: center;
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       margin-bottom: 14px;
-      border: 1px solid color-mix(in srgb, var(--accent) 44%, var(--line));
+      border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--line));
       border-radius: 999px;
       color: var(--accent);
       background: var(--accent-soft);
-      font-size: 14px;
+      font-size: 20px;
+      line-height: 1;
     }
 
     .note-card:nth-child(2) {
-      background: var(--accent-soft);
-      border-color: color-mix(in srgb, var(--accent) 28%, var(--line));
+      background: color-mix(in srgb, var(--accent) 8%, var(--paper-soft));
+      border-color: color-mix(in srgb, var(--accent) 24%, var(--line));
     }
 
     .card-mark {
@@ -716,10 +719,11 @@
     }
 
     footer .wrap {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
+      display: grid;
+      justify-items: center;
+      gap: 6px;
+      text-align: center;
+      color: var(--soft);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -740,11 +744,11 @@
     @media (max-width: 920px) {
       .hero-top {
         grid-template-columns: 1fr;
-        gap: 34px;
       }
 
       .terminal {
         max-width: 520px;
+        justify-self: start;
       }
     }
 
@@ -787,7 +791,6 @@
       .item { gap: 8px; padding: 22px 0; }
       .item-arrow { display: none; }
       .item-status { margin-top: 6px; }
-      .archive-list { grid-template-columns: 1fr; }
       .about-grid { grid-template-columns: 1fr; }
       .back-top { display: none; }
     }
@@ -900,49 +903,41 @@
           <h2 class="section-title" id="work-title">Selected things I am building or have worked on.</h2>
           <p class="section-copy">A small public surface for now. Some work is private, some is still becoming public, and some older builds are kept as history.</p>
         </div>
+      </div>
 
       <div class="list">
-        <article class="item">
+        <article class="item item-featured">
           <div class="item-date">Now</div>
           <div>
             <h3>Foveus</h3>
             <p>Execution intelligence for backend teams. It helps make sense of what happened across requests, workers, jobs, external calls, and business outcomes — especially when the surface-level signal looks fine.</p>
           </div>
-          <div class="item-status"><span class="status-pill">Private beta</span></div>
+          <div class="item-status badge-group"><span class="status-pill">Now</span><span class="status-pill">Private beta</span></div>
         </article>
 
-        <a class="item item-link" href="https://github.com/TobbyJay/sendbyte-dotnet" target="_blank" rel="noreferrer" aria-label="Sendbyte .NET SDK on GitHub">
+        <a class="item item-link item-open-source" href="https://github.com/TobbyJay/sendbyte-dotnet" target="_blank" rel="noreferrer" aria-label="Sendbyte .NET SDK on GitHub">
           <div class="item-date">Open source</div>
           <div>
             <h3>Sendbyte .NET SDK</h3>
             <p>A .NET SDK effort around clean client design, options, tests, webhook verification, and useful developer ergonomics.</p>
           </div>
-          <div class="item-arrow" aria-hidden="true">↗</div>
+          <div class="item-meta"><span class="status-pill">Open Source</span><span class="item-arrow" aria-hidden="true">↗</span></div>
         </a>
 
-        <article class="item">
+        <article class="item item-private">
           <div class="item-date">Systems</div>
           <div>
             <h3>Backend workflows</h3>
             <p>Work across APIs, webhooks, workers, jobs, queues, data consistency, retries, idempotency, and operational debugging.</p>
           </div>
-          <div class="item-status"><span class="status-pill">Private work</span></div>
+          <div class="item-status"><span class="status-pill">Private</span></div>
         </article>
 
-        <article class="item">
+        <article class="item item-archive">
           <div class="item-date">Archive</div>
           <div>
             <h3>Earlier builds</h3>
-            <p>Older projects from years of learning and building. Kept here as context, not as the main signal.</p>
-            <ul class="archive-list" aria-label="Earlier builds">
-              <li><strong>Net.Facebook</strong> — early .NET package experiment.</li>
-              <li><strong>Tob.by.bot</strong> — bot and automation experiment.</li>
-              <li><strong>Spotahub</strong> — earlier application/product build.</li>
-              <li><strong>Find-A-Hub API</strong> — API-focused hub discovery project.</li>
-              <li><strong>Mini-Hospital</strong> — hospital-management learning build.</li>
-              <li><strong>Foodaee</strong> — food/product app experiment.</li>
-              <li><strong>CoinFarm</strong> — finance-themed learning build.</li>
-            </ul>
+            <p class="archive-inline">Older projects from years of learning and building: <strong>Net.Facebook</strong>, <strong>Tob.by.bot</strong>, <strong>Spotahub</strong>, <strong>Find-A-Hub API</strong>, <strong>Mini-Hospital</strong>, <strong>Foodaee</strong>, and <strong>CoinFarm</strong>. Kept here as context, not as the main signal.</p>
           </div>
           <div class="item-status"><span class="status-pill">History</span></div>
         </article>
