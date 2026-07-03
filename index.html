@@ -4,53 +4,56 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tobby Umoh — Backend Engineer</title>
-  <meta name="description" content="Tobby Umoh is a backend engineer in Lagos, Nigeria, working across .NET, backend systems, APIs, background jobs, observability, production reliability, and developer tools." />
+  <meta name="description" content="Tobby Umoh is a backend engineer working across .NET, production systems, observability, workflow reliability, and developer tools." />
   <meta name="author" content="Tobby Umoh" />
   <link rel="canonical" href="https://tobbyumoh.netlify.app" />
+
   <meta property="og:title" content="Tobby Umoh — Backend Engineer" />
-  <meta property="og:description" content="Backend engineer working across .NET, backend systems, production reliability, and developer tools." />
+  <meta property="og:description" content="Backend engineer working across .NET, production systems, observability, workflow reliability, and developer tools." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://tobbyumoh.netlify.app" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Tobby Umoh — Backend Engineer" />
-  <meta name="twitter:description" content="Backend engineer working across .NET, backend systems, production reliability, and developer tools." />
-  <meta name="theme-color" content="#f5efe3" />
+  <meta name="twitter:description" content="Backend engineer working across .NET, production systems, observability, workflow reliability, and developer tools." />
+  <meta name="theme-color" content="#f7f3ea" />
+
   <style>
     :root {
-      --bg: #f5efe3;
-      --paper: #fffaf1;
-      --ink: #171512;
-      --muted: #6f675c;
-      --soft: #8c8274;
-      --line: #d8cab6;
-      --line-strong: #c5b397;
-      --accent: #1d4b43;
-      --accent-2: #8b5e34;
-      --topbar-bg: rgba(245, 239, 227, .82);
-      --card-bg: rgba(255, 250, 241, .68);
-      --card-bg-strong: rgba(255, 250, 241, .9);
-      --shadow: 0 20px 60px rgba(49, 38, 25, .08);
-      --radius: 24px;
-      --radius-sm: 14px;
-      --max: 1120px;
-      --focus-ring: 0 0 0 4px rgba(29, 75, 67, .18);
+      color-scheme: light;
+      --bg: #f7f3ea;
+      --ink: #14120f;
+      --muted: #686158;
+      --soft: #8f8578;
+      --line: #ded3c2;
+      --line-strong: #cdbda5;
+      --paper: #fffdf8;
+      --paper-soft: rgba(255, 253, 248, .52);
+      --accent: #d4a574;
+      --accent-strong: #a9773f;
+      --accent-soft: rgba(212, 165, 116, .14);
+      --terminal: #fbf7ef;
+      --terminal-shadow: rgba(58, 47, 34, .07);
+      --max: 960px;
+      --radius: 18px;
+      --shadow: 0 18px 60px rgba(58, 47, 34, .08);
     }
 
-    [data-theme="dark"] {
-      --bg: #11100e;
-      --paper: #1b1915;
-      --ink: #f6efe4;
-      --muted: #b7aa97;
-      --soft: #9c907f;
-      --line: #342f28;
-      --line-strong: #4a4035;
-      --accent: #8fc8b9;
-      --accent-2: #d5aa76;
-      --topbar-bg: rgba(17, 16, 14, .82);
-      --card-bg: rgba(27, 25, 21, .72);
-      --card-bg-strong: rgba(27, 25, 21, .94);
-      --shadow: 0 20px 60px rgba(0, 0, 0, .28);
-      --focus-ring: 0 0 0 4px rgba(143, 200, 185, .18);
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #12100d;
+      --ink: #f8f1e7;
+      --muted: #b9aa98;
+      --soft: #8f806e;
+      --line: #352f27;
+      --line-strong: #4a4034;
+      --paper: #1a1713;
+      --paper-soft: rgba(255, 249, 239, .045);
+      --accent: #d4a574;
+      --accent-strong: #f0c98f;
+      --accent-soft: rgba(212, 165, 116, .15);
+      --terminal: #171410;
+      --terminal-shadow: rgba(0, 0, 0, .2);
+      --shadow: 0 18px 60px rgba(0, 0, 0, .25);
     }
 
     * { box-sizing: border-box; }
@@ -62,20 +65,34 @@
 
     body {
       margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 36rem),
-        radial-gradient(circle at 100% 10%, color-mix(in srgb, var(--accent-2) 11%, transparent), transparent 34rem),
+        radial-gradient(circle at 20% 0%, rgba(212, 165, 116, .10), transparent 30rem),
         var(--bg);
-      line-height: 1.55;
-      text-rendering: optimizeLegibility;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.62;
       -webkit-font-smoothing: antialiased;
-      transition: background .2s ease, color .2s ease;
+      text-rendering: optimizeLegibility;
+      transition: background-color .2s ease, color .2s ease;
     }
 
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
+    html[data-theme="dark"] body {
+      background:
+        radial-gradient(circle at 18% 0%, rgba(212, 165, 116, .08), transparent 28rem),
+        var(--bg);
+    }
+
+    a {
+      color: inherit;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
+
+    a:hover { color: var(--accent); }
+
+    .external-arrow { color: var(--accent); }
+
+    button, input, textarea { font: inherit; }
 
     ::selection {
       color: var(--paper);
@@ -83,646 +100,626 @@
     }
 
     :focus-visible {
-      outline: 0;
-      box-shadow: var(--focus-ring);
+      outline: 3px solid color-mix(in srgb, var(--accent) 30%, transparent);
+      outline-offset: 4px;
+      border-radius: 8px;
     }
 
-    .page {
+    .wrap {
       width: min(calc(100% - 40px), var(--max));
       margin: 0 auto;
     }
 
-    .topbar {
+    header {
       position: sticky;
       top: 0;
-      z-index: 20;
-      backdrop-filter: blur(18px);
-      background: var(--topbar-bg);
-      border-bottom: 1px solid color-mix(in srgb, var(--line) 82%, transparent);
+      z-index: 50;
+      padding: 18px 0 0;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
 
     .nav {
-      width: min(calc(100% - 40px), var(--max));
-      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 72px;
       gap: 24px;
+      padding: 0 0 16px;
+      border-bottom: 1px solid var(--line);
     }
 
-    .brand {
+    .home-link {
+      width: 36px;
+      height: 36px;
+      display: inline-grid;
+      place-items: center;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 760;
+      letter-spacing: -0.035em;
+      text-decoration: none;
+      white-space: nowrap;
+      background: var(--paper-soft);
+      color: var(--ink);
+      transition: color .2s ease, transform .2s ease, border-color .2s ease, background-color .2s ease;
+    }
+
+    .home-link:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      transform: translateY(-1px);
+    }
+
+    .nav-right {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      border-radius: 999px;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
-    .mark {
+    .nav-links,
+    .socials {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a,
+    .socials a {
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      position: relative;
+      transition: color .2s ease;
+    }
+
+    .nav-links a::after,
+    .socials a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -3px;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .2s ease;
+    }
+
+    .nav-links a:hover,
+    .socials a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
+    .nav-links a:hover::after,
+    .socials a:hover::after,
+    .nav-links a.active::after {
+      transform: scaleX(1);
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: var(--paper-soft);
+      border-radius: 999px;
       width: 34px;
       height: 34px;
       display: inline-grid;
       place-items: center;
-      border: 1px solid var(--ink);
-      border-radius: 50%;
-      font-size: 12px;
-      letter-spacing: .08em;
-      background: var(--paper);
-    }
-
-    .navlinks {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .navlinks a,
-    .theme-toggle {
-      padding: 8px 10px;
-      border-radius: 999px;
-      transition: color .2s ease, background .2s ease, border-color .2s ease;
-    }
-
-    .navlinks a:hover,
-    .navlinks a.active {
-      color: var(--ink);
-      background: var(--card-bg-strong);
-    }
-
-    .navlinks a.active {
-      box-shadow: inset 0 -1px 0 var(--line-strong);
-    }
-
-    .theme-toggle {
-      appearance: none;
-      border: 1px solid var(--line);
-      background: var(--card-bg);
-      color: var(--muted);
       cursor: pointer;
-      font-size: 13px;
-      font-weight: 700;
+      line-height: 1;
+      transition: transform .2s ease, border-color .2s ease, color .2s ease, background-color .2s ease;
     }
 
-    .theme-toggle:hover { color: var(--ink); border-color: var(--line-strong); }
-
-    .mobile-menu {
-      display: none;
-      position: relative;
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
     }
 
-    .mobile-menu summary {
-      list-style: none;
-      appearance: none;
-      border: 1px solid var(--line-strong);
-      background: var(--card-bg);
-      color: var(--ink);
-      border-radius: 999px;
-      padding: 9px 12px;
-      font: inherit;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .mobile-menu summary::-webkit-details-marker { display: none; }
-
-    .mobile-menu summary span {
-      display: inline-block;
-      margin-left: 6px;
-      transition: transform .2s ease;
-    }
-
-    .mobile-menu[open] summary span { transform: rotate(180deg); }
-
-    .mobile-panel {
-      position: absolute;
-      top: calc(100% + 10px);
-      right: 0;
-      width: min(270px, calc(100vw - 28px));
-      display: grid;
-      gap: 4px;
-      padding: 8px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: var(--card-bg-strong);
-      box-shadow: var(--shadow);
-    }
-
-    .mobile-panel a,
-    .mobile-panel button {
-      padding: 12px 14px;
-      border-radius: 12px;
-      color: var(--muted);
-      font-size: 14px;
-      transition: color .2s ease, background .2s ease;
-    }
-
-    .mobile-panel a { display: block; }
-
-    .mobile-panel button {
-      appearance: none;
-      border: 0;
-      width: 100%;
-      text-align: left;
-      background: transparent;
-      cursor: pointer;
-    }
-
-    .mobile-panel a:hover,
-    .mobile-panel a.active,
-    .mobile-panel button:hover {
-      color: var(--ink);
-      background: color-mix(in srgb, var(--bg) 72%, transparent);
-    }
+    main { padding-bottom: 80px; }
 
     .hero {
-      padding: 92px 0 80px;
+      padding: 84px 0 68px;
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr);
-      gap: 56px;
-      align-items: end;
-      border-bottom: 1px solid var(--line-strong);
+      gap: 42px;
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 420px);
+      gap: 52px;
+      align-items: center;
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--accent);
+      margin: 0 0 20px;
+      color: var(--soft);
       font-size: 13px;
-      font-weight: 700;
       letter-spacing: .12em;
       text-transform: uppercase;
-      margin-bottom: 22px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 28px;
-      height: 1px;
-      background: currentColor;
-      display: inline-block;
+      font-weight: 760;
     }
 
     h1 {
-      font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-      font-weight: 500;
-      line-height: .95;
-      font-size: clamp(58px, 10vw, 128px);
-      letter-spacing: -0.075em;
-      margin: 0 0 28px;
-      max-width: 860px;
-    }
-
-    .lead {
-      font-size: clamp(20px, 2.5vw, 31px);
-      line-height: 1.25;
-      letter-spacing: -0.04em;
-      max-width: 760px;
       margin: 0;
-      color: color-mix(in srgb, var(--ink) 88%, var(--muted));
+      max-width: 760px;
+      font-size: clamp(54px, 11vw, 118px);
+      line-height: .88;
+      letter-spacing: -0.075em;
+      font-weight: 820;
     }
 
-    .lead span { color: var(--muted); }
+    .subtitle {
+      max-width: 680px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(19px, 2.5vw, 25px);
+      line-height: 1.42;
+      letter-spacing: -0.026em;
+    }
+
+    .subtitle strong {
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .hero-note {
+      margin: 16px 0 0;
+      color: var(--soft);
+      font-size: 14px;
+    }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 34px;
+      margin-top: 30px;
     }
 
-    .btn {
+    .button {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 9px;
-      min-height: 44px;
-      padding: 0 18px;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid var(--line-strong);
       border-radius: 999px;
-      border: 1px solid var(--ink);
+      background: var(--paper-soft);
+      box-shadow: 0 8px 24px rgba(58, 47, 34, .05);
       font-size: 14px;
-      font-weight: 700;
-      transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+      font-weight: 650;
+      text-decoration: none;
+      color: var(--ink);
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, background-color .2s ease, color .2s ease, box-shadow .2s ease;
     }
 
-    .btn:hover { transform: translateY(-1px); }
-
-    .btn.primary {
-      color: var(--paper);
+    .button.primary {
       background: var(--ink);
+      border-color: var(--ink);
+      color: var(--paper);
     }
 
-    .btn.primary:hover {
-      background: var(--accent);
+    .button:hover {
+      transform: translateY(-2px) scale(1.01);
+      color: var(--ink);
       border-color: var(--accent);
+      background: var(--accent-soft);
+      box-shadow: 0 12px 28px rgba(58, 47, 34, .08);
     }
 
-    .btn.secondary { background: transparent; }
-    .btn.secondary:hover { background: var(--card-bg-strong); }
-
-    .profile-card {
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--card-bg);
-      box-shadow: var(--shadow);
-    }
-
-    .profile-top {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 22px;
-    }
-
-    .avatar {
-      width: 58px;
-      height: 58px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      background: var(--ink);
+    .button.primary:hover {
       color: var(--paper);
-      font-family: ui-serif, Georgia, serif;
-      font-size: 21px;
-      letter-spacing: -.05em;
+      background: var(--accent-strong);
+      border-color: var(--accent-strong);
     }
 
-    .profile-top strong {
-      display: block;
-      font-size: 17px;
-      line-height: 1.2;
+    .terminal {
+      width: 100%;
+      min-height: 254px;
+      border: 1px solid rgba(212, 165, 116, .5);
+      border-radius: 16px;
+      background: var(--terminal);
+      box-shadow: 0 18px 50px var(--terminal-shadow);
+      padding: 24px 24px;
+      font-family: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 13.5px;
+      line-height: 1.72;
+      color: var(--ink);
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
     }
 
-    .profile-top small {
-      display: block;
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 14px;
+    .terminal:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 0 22px 58px var(--terminal-shadow);
     }
 
-    .current-list {
-      display: grid;
-      gap: 0;
+    .terminal pre {
       margin: 0;
+      white-space: pre-wrap;
     }
 
-    .current-row {
+    .terminal-line {
+      display: block;
+      min-height: 1.72em;
+      opacity: 0;
+      transform: translateY(4px);
+      animation: terminalLine .36s ease forwards;
+      animation-delay: calc(var(--line) * .16s);
+    }
+
+    .terminal .prompt { color: var(--soft); }
+    .terminal .arrow { color: var(--accent); font-weight: 800; }
+    .terminal .cursor {
+      display: inline-block;
+      width: 7px;
+      height: 1.15em;
+      margin-left: 2px;
+      background: currentColor;
+      vertical-align: -0.18em;
+      animation: blink 1.1s steps(1, end) infinite;
+    }
+
+    @keyframes terminalLine {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .currently {
       display: grid;
-      grid-template-columns: 90px 1fr;
-      gap: 14px;
-      align-items: baseline;
-      padding: 14px 0;
-      border-top: 1px solid var(--line);
-      font-size: 15px;
+      grid-template-columns: 125px 1fr;
+      gap: 18px 30px;
+      max-width: 780px;
+      padding-top: 6px;
     }
 
-    .current-row dt {
+    .currently dt {
       color: var(--soft);
       font-size: 12px;
-      font-weight: 800;
+      letter-spacing: .11em;
       text-transform: uppercase;
-      letter-spacing: .1em;
+      font-weight: 780;
     }
 
-    .current-row dd {
+    .currently dd {
       margin: 0;
-      color: color-mix(in srgb, var(--ink) 83%, var(--muted));
+      color: var(--muted);
+      max-width: 590px;
     }
 
-    section {
-      padding: 74px 0;
-      border-bottom: 1px solid var(--line-strong);
+    .currently a { font-weight: 650; }
+
+    .section {
+      padding: 54px 0;
+      border-top: 1px solid var(--line);
+      scroll-margin-top: 90px;
     }
 
     .section-head {
       display: grid;
-      grid-template-columns: 240px minmax(0, 1fr);
-      gap: 40px;
-      align-items: start;
-      margin-bottom: 34px;
+      grid-template-columns: 180px 1fr;
+      gap: 24px;
+      margin-bottom: 30px;
+      align-items: baseline;
     }
 
     .section-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--accent-2);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: .12em;
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: .11em;
       text-transform: uppercase;
+      font-weight: 820;
+      display: inline-flex;
+      transition: color .2s ease;
+      align-items: center;
+      gap: 9px;
     }
 
     .section-kicker::before {
       content: "";
-      width: 8px;
-      height: 8px;
+      width: 9px;
+      height: 9px;
       border-radius: 999px;
-      background: currentColor;
-      opacity: .85;
+      background: var(--accent);
+      opacity: .9;
     }
 
-    h2 {
-      font-size: clamp(31px, 4vw, 54px);
-      font-weight: 600;
-      line-height: 1;
-      letter-spacing: -.055em;
+    .section-kicker:hover { color: var(--accent); }
+
+    .section-title {
       margin: 0;
-      max-width: 800px;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.1;
+      letter-spacing: -0.045em;
     }
 
     .section-copy {
+      margin: 12px 0 0;
       color: var(--muted);
-      font-size: 17px;
-      max-width: 700px;
-      margin: 18px 0 0;
+      max-width: 610px;
+      font-size: 16px;
     }
 
-    .focus-grid {
+    .list {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
+      gap: 0;
+      border-top: 1px solid var(--line);
     }
 
-    .focus-card {
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      padding: 19px;
-      background: color-mix(in srgb, var(--card-bg) 80%, transparent);
-      min-height: 180px;
-    }
-
-    .focus-card .num {
-      display: block;
-      color: var(--accent-2);
-      font-size: 12px;
-      font-weight: 800;
-      margin-bottom: 30px;
-    }
-
-    .focus-card h3 {
-      margin: 0 0 10px;
-      font-size: 18px;
-      letter-spacing: -.03em;
-    }
-
-    .focus-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .work-list { display: grid; gap: 14px; }
-
-    .work-item {
+    .item {
       display: grid;
-      grid-template-columns: 170px minmax(0, 1fr) 190px;
+      grid-template-columns: 180px 1fr auto;
       gap: 24px;
-      align-items: start;
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: color-mix(in srgb, var(--card-bg) 88%, transparent);
-      transition: border-color .2s ease, transform .2s ease, background .2s ease;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+      border-radius: 14px;
+      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, padding-left .2s ease, padding-right .2s ease;
     }
 
-    .work-item:hover {
+    .item:hover {
       transform: translateY(-2px);
-      border-color: var(--line-strong);
-      background: var(--card-bg-strong);
+      background: var(--paper-soft);
+      box-shadow: 0 14px 36px rgba(58, 47, 34, .055);
+      padding-left: 14px;
+      padding-right: 14px;
     }
 
-    .work-meta {
+    .item-date,
+    .item-status {
       color: var(--soft);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
+      font-size: 13px;
+      white-space: nowrap;
     }
 
-    .work-title {
-      margin: 0 0 8px;
-      font-size: 23px;
-      line-height: 1.1;
-      letter-spacing: -.04em;
+    .item h3 {
+      margin: 0 0 7px;
+      font-size: 20px;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
     }
 
-    .work-desc {
+    .item p {
       margin: 0;
       color: var(--muted);
-      font-size: 15px;
-      max-width: 640px;
+      max-width: 580px;
     }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 7px;
+    .item-arrow {
+      color: var(--accent);
+      font-size: 18px;
+      text-decoration: none;
     }
 
-    .tag,
-    .note-status {
+    .item-link {
+      text-decoration: none;
+    }
+
+    .item-link:hover h3 { color: var(--accent); }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
       border: 1px solid var(--line);
+      background: var(--paper-soft);
       border-radius: 999px;
-      padding: 5px 9px;
-      color: var(--muted);
-      background: color-mix(in srgb, var(--bg) 58%, transparent);
+      padding: 4px 8px;
+      color: var(--soft);
       font-size: 12px;
       white-space: nowrap;
     }
 
-    .archive-grid {
+    .archive-list {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 26px;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 18px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      max-width: 680px;
     }
 
-    .archive-card {
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 16px;
-      background: color-mix(in srgb, var(--card-bg) 72%, transparent);
-    }
-
-    .archive-card strong {
-      display: block;
-      font-size: 15px;
-      margin-bottom: 5px;
-      letter-spacing: -.02em;
-    }
-
-    .archive-card span {
-      display: block;
+    .archive-list li {
       color: var(--muted);
-      font-size: 13px;
+      font-size: 14px;
       line-height: 1.45;
     }
 
-    .writing-grid {
+    .archive-list strong {
+      color: var(--ink);
+      font-weight: 720;
+    }
+
+    .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      gap: 24px;
+      margin-top: 24px;
     }
 
     .note-card {
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: color-mix(in srgb, var(--card-bg) 82%, transparent);
-      padding: 24px;
+      background: var(--paper-soft);
+      padding: 22px;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     }
 
-    .note-card header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 12px;
+    .note-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 0 14px 34px rgba(58, 47, 34, .06);
+    }
+
+    .card-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      margin-bottom: 14px;
+      border: 1px solid color-mix(in srgb, var(--accent) 44%, var(--line));
+      border-radius: 999px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      font-size: 14px;
+    }
+
+    .note-card:nth-child(2) {
+      background: var(--accent-soft);
+      border-color: color-mix(in srgb, var(--accent) 28%, var(--line));
+    }
+
+    .card-mark {
+      display: inline-flex;
+      margin-bottom: 16px;
+      color: var(--soft);
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 780;
     }
 
     .note-card h3 {
-      margin: 0;
-      font-size: 22px;
-      letter-spacing: -.035em;
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: -0.02em;
     }
 
     .note-card p {
       margin: 0;
       color: var(--muted);
-      font-size: 15px;
     }
 
-    .note-status {
-      color: var(--accent-2);
-      border-color: color-mix(in srgb, var(--accent-2) 35%, var(--line));
-      background: transparent;
-      flex: 0 0 auto;
+    .contact-card {
+      margin-top: 28px;
+      border-radius: 26px;
+      background: #15130f;
+      color: #fff9ef;
+      padding: clamp(28px, 5vw, 46px);
+      box-shadow: var(--shadow);
     }
 
-    .contact-box {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
-      gap: 34px;
-      align-items: start;
-      padding: 34px;
-      border: 1px solid var(--line);
-      border-radius: calc(var(--radius) + 8px);
-      background: var(--ink);
-      color: var(--paper);
+    html[data-theme="dark"] .contact-card {
+      background: #f8f1e7;
+      color: #15130f;
     }
 
-    [data-theme="dark"] .contact-box {
-      background: #f6efe4;
-      color: #171512;
+    .contact-card h2 {
+      margin: 0;
+      font-size: clamp(32px, 6vw, 56px);
+      line-height: .96;
+      letter-spacing: -0.06em;
     }
 
-    .contact-box h2 { color: inherit; max-width: 680px; }
-
-    .contact-box p {
-      color: color-mix(in srgb, currentColor 72%, transparent);
+    .contact-card p {
       margin: 18px 0 0;
-      max-width: 680px;
-      font-size: 17px;
+      max-width: 610px;
+      color: rgba(255, 249, 239, .72);
+      font-size: 18px;
+      line-height: 1.5;
     }
 
-    .contact-links { display: grid; gap: 10px; }
+    html[data-theme="dark"] .contact-card p { color: rgba(21, 19, 15, .68); }
 
-    .contact-links a,
-    .contact-links button {
-      appearance: none;
-      border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
-      color: inherit;
-      background: color-mix(in srgb, currentColor 6%, transparent);
-      border-radius: 16px;
-      padding: 14px 16px;
-      font: inherit;
-      text-align: left;
-      cursor: pointer;
+    .contact-actions {
       display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .contact-actions a,
+    .contact-actions button {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      transition: background .2s ease, border-color .2s ease;
+      gap: 8px;
+      border: 1px solid rgba(255, 249, 239, .22);
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: rgba(255, 249, 239, .08);
+      color: #fff9ef;
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: 650;
+      font-size: 14px;
+      transition: transform .2s ease, background-color .2s ease, border-color .2s ease, color .2s ease;
     }
 
-    .contact-links a:hover,
-    .contact-links button:hover {
-      background: color-mix(in srgb, currentColor 12%, transparent);
-      border-color: color-mix(in srgb, currentColor 36%, transparent);
+    html[data-theme="dark"] .contact-actions a,
+    html[data-theme="dark"] .contact-actions button {
+      border-color: rgba(21, 19, 15, .16);
+      background: rgba(21, 19, 15, .06);
+      color: #15130f;
     }
 
-    .contact-links span { opacity: .72; }
+    .contact-actions a:hover,
+    .contact-actions button:hover {
+      transform: translateY(-2px) scale(1.01);
+      border-color: var(--accent);
+      background: rgba(212, 165, 116, .18);
+      color: #fff9ef;
+    }
+
+    html[data-theme="dark"] .contact-actions a:hover,
+    html[data-theme="dark"] .contact-actions button:hover {
+      background: rgba(21, 19, 15, .1);
+      color: #15130f;
+    }
 
     .back-top {
       position: fixed;
-      right: 22px;
-      bottom: 22px;
-      z-index: 30;
-      width: 44px;
-      height: 44px;
+      right: 18px;
+      bottom: 18px;
+      width: 40px;
+      height: 40px;
       border-radius: 999px;
       border: 1px solid var(--line-strong);
-      background: var(--card-bg-strong);
+      background: var(--paper);
       color: var(--ink);
+      display: grid;
+      place-items: center;
+      text-decoration: none;
       box-shadow: var(--shadow);
-      cursor: pointer;
       opacity: 0;
       pointer-events: none;
       transform: translateY(8px);
-      transition: opacity .2s ease, transform .2s ease;
+      transition: opacity .18s ease, transform .18s ease;
     }
 
-    .back-top.is-visible {
+    .back-top.visible {
       opacity: 1;
       pointer-events: auto;
       transform: translateY(0);
     }
 
+    .back-top:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
     footer {
+      padding: 28px 0 44px;
+      border-top: 1px solid var(--line);
+      color: var(--soft);
+      font-size: 14px;
+    }
+
+    footer .wrap {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       gap: 20px;
-      padding: 26px 0 46px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    @media (max-width: 900px) {
-      .hero,
-      .section-head,
-      .contact-box { grid-template-columns: 1fr; }
-      .hero { padding-top: 68px; }
-      .profile-card { max-width: 560px; }
-      .focus-grid { grid-template-columns: 1fr 1fr; }
-      .work-item { grid-template-columns: 1fr; gap: 14px; }
-      .tags { justify-content: flex-start; }
-      .archive-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 640px) {
-      .page, .nav { width: min(calc(100% - 28px), var(--max)); }
-      .nav { min-height: 64px; position: relative; }
-      .navlinks { display: none; }
-      .mobile-menu { display: block; }
-      .hero { padding: 54px 0 58px; }
-      h1 { font-size: clamp(58px, 18vw, 84px); }
-      .lead { font-size: 21px; }
-      section { padding: 56px 0; }
-      .focus-grid, .writing-grid, .archive-grid { grid-template-columns: 1fr; }
-      .current-row { grid-template-columns: 1fr; gap: 5px; }
-      .contact-box { padding: 24px; }
-      .note-card header { display: block; }
-      .note-status { display: inline-block; margin-top: 10px; }
-      footer { flex-direction: column; align-items: flex-start; }
-      .back-top { right: 14px; bottom: 14px; }
+      flex-wrap: wrap;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -730,11 +727,72 @@
       *, *::before, *::after {
         animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
         transition-duration: .01ms !important;
       }
+
+      .terminal-line {
+        opacity: 1;
+        transform: none;
+        animation: none !important;
+      }
+    }
+
+    @media (max-width: 920px) {
+      .hero-top {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .terminal {
+        max-width: 520px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(calc(100% - 28px), var(--max)); }
+
+      header { padding-top: 14px; }
+
+      .nav {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding-bottom: 14px;
+      }
+
+      .nav-right {
+        justify-content: flex-start;
+        gap: 12px;
+      }
+
+      .nav-links,
+      .socials {
+        gap: 12px;
+        font-size: 14px;
+      }
+
+      .hero { padding: 62px 0 52px; }
+
+      .currently,
+      .section-head,
+      .item {
+        grid-template-columns: 1fr;
+      }
+
+      .currently { gap: 10px; }
+      .currently dd { margin-bottom: 8px; }
+
+      .section { padding: 42px 0; }
+      .section-head { gap: 10px; }
+      .item { gap: 8px; padding: 22px 0; }
+      .item-arrow { display: none; }
+      .item-status { margin-top: 6px; }
+      .archive-list { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .back-top { display: none; }
     }
   </style>
+
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -753,11 +811,11 @@
           "knowsAbout": [
             ".NET",
             "Backend Engineering",
-            "Distributed Systems",
+            "Production Systems",
             "Observability",
-            "Production Reliability",
-            "System Design",
-            "Developer Tools"
+            "Distributed Systems",
+            "Developer Tools",
+            "Workflow Reliability"
           ],
           "sameAs": [
             "https://github.com/tobbyjay",
@@ -769,304 +827,294 @@
         {
           "@type": "WebSite",
           "name": "Tobby Umoh",
-          "url": "https://tobbyumoh.netlify.app",
-          "description": "Personal website of Tobby Umoh, a backend engineer focused on .NET, production reliability, distributed systems, and developer tools."
+          "url": "https://tobbyumoh.netlify.app"
         }
       ]
     }
   </script>
 </head>
 <body>
-  <header class="topbar">
-    <nav class="nav" aria-label="Main navigation">
-      <a href="#top" class="brand" aria-label="Tobby Umoh home">
-        <span class="mark">TU</span>
-        <span>Tobby Umoh</span>
-      </a>
-      <div class="navlinks" id="navlinks">
-        <a href="#focus">Focus</a>
-        <a href="#work">Work</a>
-        <a href="#writing">Notes</a>
-        <a href="#contact">Contact</a>
-        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">Dark</button>
-      </div>
-      <details class="mobile-menu">
-        <summary>Menu <span>↓</span></summary>
-        <div class="mobile-panel" aria-label="Mobile navigation">
-          <a href="#focus">Focus</a>
+  <header class="wrap" id="top">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="home-link" href="#top" aria-label="Tobby Umoh home">TU</a>
+      <div class="nav-right">
+        <div class="nav-links" aria-label="Sections">
           <a href="#work">Work</a>
-          <a href="#writing">Notes</a>
+          <a href="#notes">Notes</a>
+          <a href="#about">About</a>
           <a href="#contact">Contact</a>
-          <button type="button" data-theme-toggle aria-label="Toggle dark mode">Dark mode</button>
         </div>
-      </details>
+        <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">◐</button>
+      </div>
     </nav>
   </header>
 
-  <main id="top" class="page">
-    <section class="hero" aria-labelledby="hero-title">
-      <div>
-        <div class="eyebrow">Backend Engineer · Lagos</div>
-        <h1 id="hero-title">Tobby Umoh</h1>
-        <p class="lead">
-          I build backend systems that keep moving when real users, webhooks, queues, retries, integrations, and background jobs enter the picture. <span>Most of my work sits around .NET, distributed workflows, production reliability, and developer tools.</span>
-        </p>
-        <div class="hero-actions">
-          <a class="btn primary" href="mailto:tobbyumoh@gmail.com">Email me</a>
-          <a class="btn secondary" href="#work">See selected work</a>
-          <a class="btn secondary" href="https://github.com/tobbyjay" target="_blank" rel="noreferrer">GitHub ↗</a>
-        </div>
-      </div>
-
-      <aside class="profile-card" aria-label="Current focus">
-        <div class="profile-top">
-          <div class="avatar" aria-hidden="true">TU</div>
-          <div>
-            <strong>Currently</strong>
-            <small>Building, writing, and sharpening the craft.</small>
-          </div>
-        </div>
-        <dl class="current-list">
-          <div class="current-row"><dt>Work</dt><dd>Backend engineering, systems design, and production problem-solving.</dd></div>
-          <div class="current-row"><dt>Build</dt><dd>Foveus, one of the tools I am building around backend execution clarity.</dd></div>
-          <div class="current-row"><dt>Focus</dt><dd>.NET, distributed systems, jobs, APIs, observability, reliability.</dd></div>
-          <div class="current-row"><dt>Public</dt><dd>Sharing lessons from designing systems and learning production engineering.</dd></div>
-        </dl>
-      </aside>
-    </section>
-
-    <section id="focus" aria-labelledby="focus-title">
-      <div class="section-head">
-        <div class="section-kicker">Point of view</div>
+  <main class="wrap">
+    <section class="hero" aria-labelledby="intro-title">
+      <div class="hero-top">
         <div>
-          <h2 id="focus-title">I care about the parts of backend engineering that usually fail quietly.</h2>
-          <p class="section-copy">Not just controllers and CRUD. The interesting work is what happens after the request leaves the happy path: delayed jobs, external integrations, retries, reconciliation, state transitions, and the investigation trail when something goes wrong.</p>
+          <p class="eyebrow">Backend engineer · Lagos, Nigeria</p>
+          <h1 id="intro-title">Tobby Umoh</h1>
+          <p class="subtitle">
+            I build backend systems and developer tools around <strong>.NET</strong>, production reliability,
+            observability, workflows, and the parts of software that fail quietly.
+          </p>
+          <p class="hero-note">Currently debugging: life, systems, and the occasional flaky webhook.</p>
+          <div class="hero-actions" aria-label="Primary links">
+            <a class="button primary" href="mailto:tobbyumoh@gmail.com">Email me</a>
+            <a class="button" href="https://github.com/tobbyjay" target="_blank" rel="noreferrer">GitHub <span class="external-arrow">↗</span></a>
+            <a class="button" href="https://www.linkedin.com/in/tobby-umoh-26115a13b/" target="_blank" rel="noreferrer">LinkedIn <span class="external-arrow">↗</span></a>
+            <a class="button" href="https://x.com/_tobbyumoh" target="_blank" rel="noreferrer">X <span class="external-arrow">↗</span></a>
+          </div>
         </div>
+
+        <aside class="terminal" aria-label="Current status terminal">
+<pre><span class="terminal-line" style="--line: 1"><span class="prompt">tobby@umoh ~ %</span></span><span class="terminal-line" style="--line: 2">$ status --current</span><span class="terminal-line" style="--line: 3"></span><span class="terminal-line" style="--line: 4"><span class="arrow">→</span> Building Foveus</span><span class="terminal-line" style="--line: 5"><span class="arrow">→</span> Writing about reliability patterns</span><span class="terminal-line" style="--line: 6"><span class="arrow">→</span> Debugging production at 2am</span><span class="terminal-line" style="--line: 7"><span class="arrow">→</span> Open to conversations</span><span class="terminal-line" style="--line: 8"></span><span class="terminal-line" style="--line: 9"><span class="prompt">tobby@umoh ~ %</span><span class="cursor" aria-hidden="true"></span></span></pre>
+        </aside>
       </div>
 
-      <div class="focus-grid">
-        <article class="focus-card">
-          <span class="num">01</span>
-          <h3>Production reliability</h3>
-          <p>Designing systems that degrade predictably, recover safely, and leave enough evidence for debugging.</p>
-        </article>
-        <article class="focus-card">
-          <span class="num">02</span>
-          <h3>Workflows</h3>
-          <p>State transitions, integrations, background jobs, webhooks, retries, reconciliation, and the operational mess around them.</p>
-        </article>
-        <article class="focus-card">
-          <span class="num">03</span>
-          <h3>.NET systems</h3>
-          <p>C#, ASP.NET Core, workers, Hangfire-style background processing, SQL Server, Redis, and pragmatic architecture.</p>
-        </article>
-        <article class="focus-card">
-          <span class="num">04</span>
-          <h3>Developer tools</h3>
-          <p>Tools and SDKs that reduce ambiguity for engineers instead of adding another dashboard to babysit.</p>
-        </article>
-      </div>
+      <dl class="currently" aria-label="Currently">
+        <dt>Currently</dt>
+        <dd>Building Foveus, a tool for understanding backend execution across requests, workers, jobs, external calls, and business outcomes.</dd>
+
+        <dt>Thinking about</dt>
+        <dd>Execution traces, business outcomes, idempotency, retries, async workflows, and debugging systems without guesswork.</dd>
+
+        <dt>Writing</dt>
+        <dd>Notes from what I am learning while designing systems and working through production engineering problems.</dd>
+
+        <dt>Elsewhere</dt>
+        <dd class="socials">
+          <a href="https://github.com/tobbyjay" target="_blank" rel="noreferrer">GitHub <span class="external-arrow">↗</span></a>
+          <a href="https://tobby.hashnode.dev/" target="_blank" rel="noreferrer">Hashnode <span class="external-arrow">↗</span></a>
+          <a href="https://www.linkedin.com/in/tobby-umoh-26115a13b/" target="_blank" rel="noreferrer">LinkedIn <span class="external-arrow">↗</span></a>
+          <a href="https://x.com/_tobbyumoh" target="_blank" rel="noreferrer">X <span class="external-arrow">↗</span></a>
+        </dd>
+      </dl>
     </section>
 
-    <section id="work" aria-labelledby="work-title">
+    <section class="section" id="work" aria-labelledby="work-title">
       <div class="section-head">
-        <div class="section-kicker">Selected work</div>
+        <div class="section-kicker">Work</div>
         <div>
-          <h2 id="work-title">A cleaner view of what I am building and learning from.</h2>
-          <p class="section-copy">A practical snapshot of public proof, current builds, and private systems work. Not every line needs a polished case study yet; the site can grow as more work becomes public.</p>
+          <h2 class="section-title" id="work-title">Selected things I am building or have worked on.</h2>
+          <p class="section-copy">A small public surface for now. Some work is private, some is still becoming public, and some older builds are kept as history.</p>
         </div>
-      </div>
 
-      <div class="work-list">
-        <article class="work-item">
-          <div class="work-meta">Building</div>
+      <div class="list">
+        <article class="item">
+          <div class="item-date">Now</div>
           <div>
-            <h3 class="work-title">Foveus</h3>
-            <p class="work-desc">A developer tool I am building around backend execution clarity: APIs, workers, jobs, outbound calls, logs, and business outcomes. It is part of my work, not the whole identity of this website.</p>
+            <h3>Foveus</h3>
+            <p>Execution intelligence for backend teams. It helps make sense of what happened across requests, workers, jobs, external calls, and business outcomes — especially when the surface-level signal looks fine.</p>
           </div>
-          <div class="tags"><span class="tag">In progress</span><span class="tag">.NET</span><span class="tag">Reliability</span></div>
+          <div class="item-status"><span class="status-pill">Private beta</span></div>
         </article>
 
-        <article class="work-item">
-          <div class="work-meta">Open source</div>
+        <a class="item item-link" href="https://github.com/TobbyJay/sendbyte-dotnet" target="_blank" rel="noreferrer" aria-label="Sendbyte .NET SDK on GitHub">
+          <div class="item-date">Open source</div>
           <div>
-            <h3 class="work-title">Sendbyte .NET SDK</h3>
-            <p class="work-desc">SDK work around clean HTTP clients, webhook verification, tests, docs, samples, and package quality.</p>
+            <h3>Sendbyte .NET SDK</h3>
+            <p>A .NET SDK effort around clean client design, options, tests, webhook verification, and useful developer ergonomics.</p>
           </div>
-          <div class="tags"><span class="tag">SDK</span><span class="tag">C#</span><span class="tag">NuGet</span></div>
+          <div class="item-arrow" aria-hidden="true">↗</div>
+        </a>
+
+        <article class="item">
+          <div class="item-date">Systems</div>
+          <div>
+            <h3>Backend workflows</h3>
+            <p>Work across APIs, webhooks, workers, jobs, queues, data consistency, retries, idempotency, and operational debugging.</p>
+          </div>
+          <div class="item-status"><span class="status-pill">Private work</span></div>
         </article>
 
-        <article class="work-item">
-          <div class="work-meta">Systems</div>
+        <article class="item">
+          <div class="item-date">Archive</div>
           <div>
-            <h3 class="work-title">Production backend work</h3>
-            <p class="work-desc">Private professional work across APIs, async processing, background jobs, webhooks, limits, investigations, production fixes, and reliability improvements. The public version of this should become sanitized engineering notes, not employer-name dropping.</p>
+            <h3>Earlier builds</h3>
+            <p>Older projects from years of learning and building. Kept here as context, not as the main signal.</p>
+            <ul class="archive-list" aria-label="Earlier builds">
+              <li><strong>Net.Facebook</strong> — early .NET package experiment.</li>
+              <li><strong>Tob.by.bot</strong> — bot and automation experiment.</li>
+              <li><strong>Spotahub</strong> — earlier application/product build.</li>
+              <li><strong>Find-A-Hub API</strong> — API-focused hub discovery project.</li>
+              <li><strong>Mini-Hospital</strong> — hospital-management learning build.</li>
+              <li><strong>Foodaee</strong> — food/product app experiment.</li>
+              <li><strong>CoinFarm</strong> — finance-themed learning build.</li>
+            </ul>
           </div>
-          <div class="tags"><span class="tag">Private</span><span class="tag">APIs</span><span class="tag">Jobs</span></div>
+          <div class="item-status"><span class="status-pill">History</span></div>
         </article>
-
-        <article class="work-item">
-          <div class="work-meta">Archive</div>
-          <div>
-            <h3 class="work-title">Earlier builds</h3>
-            <p class="work-desc">Packages, APIs, bots, experiments, and small products from earlier stages of my journey. They show the long trail of building, but they should stay secondary to the current direction.</p>
-          </div>
-          <div class="tags"><span class="tag">GitHub</span><span class="tag">APIs</span><span class="tag">Experiments</span></div>
-        </article>
-      </div>
-
-      <div class="archive-grid" aria-label="Older projects with context">
-        <div class="archive-card"><strong>Net.Facebook</strong><span>Earlier package work around API integration and developer-facing abstractions.</span></div>
-        <div class="archive-card"><strong>Tob.by.bot</strong><span>Bot experiment from an earlier stage of learning and shipping small tools.</span></div>
-        <div class="archive-card"><strong>Spotahub</strong><span>Product/API build from the earlier portfolio era.</span></div>
-        <div class="archive-card"><strong>Find-A-Hub API</strong><span>API-focused project around discovery and structured backend endpoints.</span></div>
-        <div class="archive-card"><strong>Mini-Hospital</strong><span>Small domain-system experiment from the archive.</span></div>
-        <div class="archive-card"><strong>Foodaee / CoinFarm</strong><span>Older experiments kept as historical proof of consistent building.</span></div>
       </div>
     </section>
 
-    <section id="writing" aria-labelledby="writing-title">
+    <section class="section" id="notes" aria-labelledby="notes-title">
       <div class="section-head">
         <div class="section-kicker">Notes</div>
         <div>
-          <h2 id="writing-title">Lessons from designing systems and learning production engineering.</h2>
-          <p class="section-copy">The writing index is intentionally early. These are the themes I am turning into public notes; published pieces can be linked here as they go live.</p>
+          <h2 class="section-title" id="notes-title">What I am writing through.</h2>
+          <p class="section-copy">My notes should get sharper as the public trail grows. For now, these are the themes I keep returning to.</p>
         </div>
       </div>
 
-      <div class="writing-grid">
-        <article class="note-card">
-          <header>
-            <h3>Production debugging</h3>
-            <span class="note-status">Writing in progress</span>
-          </header>
-          <p>Moving from symptoms to evidence: logs, timelines, correlation IDs, job state, integration responses, and database truth.</p>
+      <div class="list">
+        <a class="item item-link" href="https://tobby.hashnode.dev/" target="_blank" rel="noreferrer" aria-label="Technical notes on Hashnode">
+          <div class="item-date">Hashnode</div>
+          <div>
+            <h3>Technical notes on Hashnode</h3>
+            <p>Longer writing and older posts live there while this website grows into a proper writing index.</p>
+          </div>
+          <div class="item-arrow" aria-hidden="true">↗</div>
+        </a>
+
+        <article class="item">
+          <div class="item-date">Theme</div>
+          <div>
+            <h3>Production engineering</h3>
+            <p>Learning from failures, debugging, observability, incident response, and the gap between what a system returned and what actually happened.</p>
+          </div>
+          <div class="item-status"><span class="status-pill">Writing in progress</span></div>
         </article>
-        <article class="note-card">
-          <header>
-            <h3>Reliability patterns</h3>
-            <span class="note-status">Writing in progress</span>
-          </header>
-          <p>Idempotency, retries, webhooks, outbox, reconciliation, rate limits, fallbacks, and failure boundaries.</p>
-        </article>
-        <article class="note-card">
-          <header>
-            <h3>.NET backend engineering</h3>
-            <span class="note-status">Writing in progress</span>
-          </header>
-          <p>Practical notes from building APIs and workers with C#, ASP.NET Core, SQL, Redis, background jobs, and integrations.</p>
-        </article>
-        <article class="note-card">
-          <header>
-            <h3>Building without the noise</h3>
-            <span class="note-status">Writing in progress</span>
-          </header>
-          <p>Shipping notes, edge cases, product thinking, and honest tradeoffs without turning every small update into a performance.</p>
+
+        <article class="item">
+          <div class="item-date">Theme</div>
+          <div>
+            <h3>System design from real work</h3>
+            <p>Notes on designing workflows, handling async continuation, preventing duplicate effects, and making backend behavior easier to reason about.</p>
+          </div>
+          <div class="item-status"><span class="status-pill">Writing in progress</span></div>
         </article>
       </div>
     </section>
 
-    <section id="contact" aria-labelledby="contact-title">
-      <div class="contact-box">
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="section-head">
+        <div class="section-kicker">About</div>
         <div>
-          <h2 id="contact-title">Useful conversations are welcome.</h2>
-          <p>Reach out for backend engineering conversations, Foveus feedback, technical writing, .NET systems, production reliability, or collaboration around developer tools.</p>
+          <h2 class="section-title" id="about-title">I care about systems that are understandable under pressure.</h2>
+          <p class="section-copy">The work I enjoy sits close to the boundary between product behavior and infrastructure reality: what the user did, what the system accepted, what continued in the background, what failed, and what evidence remains.</p>
         </div>
-        <div class="contact-links">
-          <a href="mailto:tobbyumoh@gmail.com">Email <span aria-hidden="true">→</span></a>
-          <a href="https://github.com/tobbyjay" target="_blank" rel="noreferrer" aria-label="GitHub, opens in a new tab">GitHub <span aria-hidden="true">↗</span></a>
-          <a href="https://www.linkedin.com/in/tobby-umoh-26115a13b/" target="_blank" rel="noreferrer" aria-label="LinkedIn, opens in a new tab">LinkedIn <span aria-hidden="true">↗</span></a>
-          <a href="https://x.com/_tobbyumoh" target="_blank" rel="noreferrer" aria-label="X or Twitter, opens in a new tab">X / Twitter <span aria-hidden="true">↗</span></a>
-          <a href="https://tobby.hashnode.dev/" target="_blank" rel="noreferrer" aria-label="Hashnode, opens in a new tab">Hashnode <span aria-hidden="true">↗</span></a>
-          <button type="button" id="copyEmail">Copy email <span aria-hidden="true">⧉</span></button>
+      </div>
+
+      <div class="about-grid">
+        <div class="note-card">
+          <span class="card-icon" aria-hidden="true">⚙</span>
+          <span class="card-mark">Focus</span>
+          <h3>Engineering focus</h3>
+          <p>.NET, APIs, background jobs, webhooks, databases, observability, production debugging, and workflow reliability.</p>
+        </div>
+        <div class="note-card">
+          <span class="card-icon" aria-hidden="true">◉</span>
+          <span class="card-mark">Thesis</span>
+          <h3>Point of view</h3>
+          <p>Good systems should leave enough evidence for teams to understand outcomes, not just infrastructure signals.</p>
         </div>
       </div>
     </section>
 
-    <footer>
-      <span>© <span id="year"></span> Tobby Umoh.</span>
-      <span>Backend systems, reliability, developer tools.</span>
-    </footer>
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="section-head">
+        <div class="section-kicker">Contact</div>
+        <div>
+          <h2 class="section-title" id="contact-title">Reach out.</h2>
+          <p class="section-copy">For backend engineering conversations, Foveus feedback, developer tools, writing, or collaboration around production systems.</p>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <h2>Let’s talk about systems that need to behave.</h2>
+        <p>I am easiest to reach by email. You can also find me on GitHub, LinkedIn, and X.</p>
+        <div class="contact-actions">
+          <a href="mailto:tobbyumoh@gmail.com">Email →</a>
+          <button type="button" id="copy-email" aria-label="Copy email address">Copy email ⧉</button>
+          <a href="https://github.com/tobbyjay" target="_blank" rel="noreferrer">GitHub <span class="external-arrow">↗</span></a>
+          <a href="https://www.linkedin.com/in/tobby-umoh-26115a13b/" target="_blank" rel="noreferrer">LinkedIn <span class="external-arrow">↗</span></a>
+          <a href="https://x.com/_tobbyumoh" target="_blank" rel="noreferrer">X <span class="external-arrow">↗</span></a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <button type="button" class="back-top" id="backTop" aria-label="Back to top">↑</button>
+  <a class="back-top" href="#top" id="back-top" aria-label="Back to top">↑</a>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year">2026</span> Tobby Umoh</span>
+      <span>Handcrafted with care · one HTML file</span>
+      <span>Backend engineering · Production systems · Developer tools</span>
+    </div>
+  </footer>
 
   <script>
     const year = document.getElementById('year');
-    year.textContent = new Date().getFullYear();
+    if (year) year.textContent = new Date().getFullYear();
 
-    const mobileMenu = document.querySelector('.mobile-menu');
-    mobileMenu?.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => mobileMenu.removeAttribute('open'));
-    });
-
-    const themeButtons = document.querySelectorAll('[data-theme-toggle]');
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('theme-toggle');
     const themeMeta = document.querySelector('meta[name="theme-color"]');
-    const storedTheme = localStorage.getItem('theme');
 
-    function applyTheme(theme) {
-      document.documentElement.dataset.theme = theme;
+    const setTheme = (theme) => {
+      root.dataset.theme = theme;
       localStorage.setItem('theme', theme);
-      themeMeta?.setAttribute('content', theme === 'dark' ? '#11100e' : '#f5efe3');
-      themeButtons.forEach((button) => {
-        const nextLabel = theme === 'dark' ? 'Light' : 'Dark';
-        button.textContent = button.closest('.mobile-panel') ? `${nextLabel} mode` : nextLabel;
-        button.setAttribute('aria-pressed', String(theme === 'dark'));
-      });
-    }
-
-    applyTheme(storedTheme === 'dark' ? 'dark' : 'light');
-
-    themeButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const current = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
-        applyTheme(current === 'dark' ? 'light' : 'dark');
-        mobileMenu?.removeAttribute('open');
-      });
-    });
-
-    const copyButton = document.getElementById('copyEmail');
-    copyButton?.addEventListener('click', async () => {
-      const email = 'tobbyumoh@gmail.com';
-      try {
-        await navigator.clipboard.writeText(email);
-        const original = copyButton.innerHTML;
-        copyButton.innerHTML = 'Copied <span aria-hidden="true">✓</span>';
-        setTimeout(() => { copyButton.innerHTML = original; }, 1600);
-      } catch (err) {
-        window.location.href = `mailto:${email}`;
+      if (themeToggle) {
+        themeToggle.textContent = theme === 'dark' ? '☀' : '◐';
+        themeToggle.setAttribute('aria-pressed', String(theme === 'dark'));
       }
-    });
+      if (themeMeta) themeMeta.setAttribute('content', theme === 'dark' ? '#12100d' : '#f7f3ea');
+    };
 
-    const navAnchors = document.querySelectorAll('.navlinks a, .mobile-panel a');
-    const sections = [...document.querySelectorAll('section[id]')];
+    const storedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(storedTheme || (prefersDark ? 'dark' : 'light'));
 
-    function setActiveNav(id) {
-      navAnchors.forEach((anchor) => {
-        const isActive = anchor.getAttribute('href') === `#${id}`;
-        anchor.classList.toggle('active', isActive);
-        if (isActive) anchor.setAttribute('aria-current', 'true');
-        else anchor.removeAttribute('aria-current');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        setTheme(next);
       });
     }
 
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible?.target?.id) setActiveNav(visible.target.id);
-    }, { rootMargin: '-34% 0px -52% 0px', threshold: [0.08, 0.22, 0.5] });
+    const copy = document.getElementById('copy-email');
+    if (copy) {
+      copy.addEventListener('click', async () => {
+        const email = 'tobbyumoh@gmail.com';
+        try {
+          await navigator.clipboard.writeText(email);
+          const old = copy.textContent;
+          copy.textContent = 'Copied ✓';
+          window.setTimeout(() => { copy.textContent = old; }, 1600);
+        } catch (_) {
+          window.location.href = `mailto:${email}`;
+        }
+      });
+    }
 
-    sections.forEach((section) => observer.observe(section));
+    const navLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+    const sections = navLinks
+      .map((link) => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
 
-    const backTop = document.getElementById('backTop');
-    window.addEventListener('scroll', () => {
-      backTop?.classList.toggle('is-visible', window.scrollY > 520);
-    }, { passive: true });
+    const markActive = () => {
+      let current = '';
+      sections.forEach((section) => {
+        const top = section.getBoundingClientRect().top;
+        if (top <= 130) current = `#${section.id}`;
+      });
+      navLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === current);
+      });
+    };
 
-    backTop?.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    const backTop = document.getElementById('back-top');
+    const handleScroll = () => {
+      markActive();
+      if (backTop) backTop.classList.toggle('visible', window.scrollY > 620);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('load', handleScroll);
+    handleScroll();
   </script>
 </body>
 </html>
